@@ -1,0 +1,44 @@
+/* styles.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+#calendar {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#calendar th, #calendar td {
+    position: relative; 
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #dee2e6;
+}
+
+#calendar th {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.event-day.highlight {
+    background-color: #ffeeba; /* Couleur de fond pour la surbrillance supplémentaire */
+    border: 2px solid #ffc107; /* Bordure pour la surbrillance supplémentaire */
+}
+
+.event-day div {
+    background-color: #0dc2ff; /* Fond bleu clair pour le texte avec événement */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.event-day.highlight::before {
+    background-color: #ffeeba;
+    border: 2px solid #ffc107;
+}

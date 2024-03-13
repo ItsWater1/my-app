@@ -24,7 +24,8 @@ if (!isset($_SESSION['username'])) {
         <br/>
         <h2>Jeunesse Treycovagnes - Chamblon 2024</h2>
         <br/>
-    
+        <?php include('fluxrss.php');?>
+        
         <div class="nav-buttons">
             <button class="btn btn-sm btn-primary" onclick="prevMonth()">Mois précédent</button>
             <b><span id="monthYear"></span></b>

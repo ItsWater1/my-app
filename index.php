@@ -24,6 +24,7 @@ if (!isset($_SESSION['username'])) {
         <br/>
         <h2>Jeunesse Treycovagnes - Chamblon 2024</h2>
         <br/>
+        <?php include('fluxrss.php');?>
 
         <table class="table">
             <thead>

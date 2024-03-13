@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-// Détruire toutes les données de session
+// Dï¿½truire toutes les donnï¿½es de session
 session_destroy();
 
 // Rediriger vers la page de connexion
-header("Location: login.html");
+header("Location: login.php");
 exit();
 ?>

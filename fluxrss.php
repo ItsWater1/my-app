@@ -3,6 +3,7 @@ include('DB/DB_connexion.php');
 include('DB/requeterss.php');
 ?>
 
+<!-- Création du flux RSS -->
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
     <channel>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['username'])) {
-    header("Location: login.html");
+    header("Location: login.php");
     exit();
 }
 ?>
@@ -67,7 +67,7 @@ if (!isset($_SESSION['username'])) {
                     headerRow.appendChild(th);
                 }
 
-                // Create calendar rows
+                // Créer les lignes du calendrier
                 var date = 1;
     for (var i = 0; i < 6; i++) {
         var row = table.insertRow();
@@ -85,7 +85,8 @@ if (!isset($_SESSION['username'])) {
                 var dateString = cellDate.toISOString().split('T')[0];
                 
                 if (events[dateString]) {
-                cell.classList.add("event-day");  // Ajouter la classe event-day pour surligner
+                // Ajouter la classe event-day pour surligner
+                cell.classList.add("event-day");  
                 var eventList = events[dateString].join(', ');
                 var eventDiv = document.createElement("div");
                 eventDiv.innerHTML = eventList;

@@ -1,6 +1,4 @@
 -- AW 2023.13.03
--- FICHIER MYSQL POUR FAIRE FONCTIONNER LES EXEMPLES
--- DE REQUETES MYSQL
 -- Database: module151_jeunesse
 
 -- Détection si une autre base de donnée du même nom existe

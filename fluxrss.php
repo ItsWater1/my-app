@@ -1,8 +1,8 @@
 <?php
-// Set the timezone to your desired value
+// Fuseau horaire
 date_default_timezone_set('Europe/Zurich');
 
-// Include necessary files
+// inclure les requêtes et la connexion à la DB
 include('/DB/DB_connexion.php');
 include('/DB/requeterss.php');
 ?>

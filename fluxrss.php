@@ -1,4 +1,5 @@
 <?php
+//header("Content-type: text/xml");
 // Fuseau horaire
 date_default_timezone_set('Europe/Zurich');
 

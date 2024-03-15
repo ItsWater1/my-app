@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+if(isset($_POST['captcha'])){
+    if($_POST['captcha'] == $_SESSION['captcha']) {
+        echo "Captcha valide";
+    } else {
+        echo "Captcha invalide";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,8 +31,13 @@
                 <label for="password">Mot de passe :</label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
+            <br>
+            <!-- Mise en place du captcha -->
+            <div>
+                <img src="ressources/captcha.php"/>
+                <input type="text" class="form-control" name="captcha" placeholder="Entrez le Captcha" required>
+                </div>
             <button type="submit" class="btn btn-primary">Se connecter</button>
-        </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

@@ -1,6 +1,10 @@
 <?php
-include('DB/DB_connexion.php');
-include('DB/requeterss.php');
+// Set the timezone to your desired value
+date_default_timezone_set('Europe/Zurich');
+
+// Include necessary files
+include('/DB/DB_connexion.php');
+include('/DB/requeterss.php');
 ?>
 
 <!-- Création du flux RSS -->

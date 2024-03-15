@@ -23,19 +23,19 @@ if (!isset($_SESSION['username'])) {
         <form action="process_ajout.php" method="post">
             <div class="form-group">
                 <label for="Nom">Nom de la Manifestation :</label>
-                <input type="text" id="Nom" name="Nom" >
+                <input type="text" id="Nom" name="Nom" required>
             </div>
             <div class="form-group">
                 <label for="Date">Date :</label>
-                <input type="date" id="Date" name="Date">
+                <input type="date" id="Date" name="Date" required>
             </div>
             <div class="form-group">
                 <label for="Lieu">Lieu :</label>
-                <input type="text" id="Lieu" name="Lieu">
+                <input type="text" id="Lieu" name="Lieu" required>
             </div>
             <div class="form-group">
                 <label for="Type">Type :</label>
-                <input type="text" id="Type" name="Type">
+                <input type="text" id="Type" name="Type" required>
             </div>
             <button type="submit" class="btn btn-primary">Ajouter</button>
         </form>

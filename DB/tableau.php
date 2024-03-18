@@ -1,7 +1,7 @@
 <?php
 include 'DB_connexion.php';
 
-// Ex�cute la requ�te SQL
+// Exécute la requête SQL
 $sql = "SELECT
     m.Nom AS NomManifestation,
     m.Date,
@@ -25,7 +25,7 @@ ORDER BY Date;
 
 $result = $conn->query($sql);
 
-// R�cup�re les r�sultats sous forme de tableau
+// Récupère les résultats sous forme de tableau
 $rows = array();
 while ($row = $result->fetch_assoc()) {
     $rows[] = $row;
@@ -34,6 +34,6 @@ while ($row = $result->fetch_assoc()) {
 // Convertit le tableau en format JSON
 echo json_encode($rows);
 
-// Ferme la connexion � la base de donn�es
+// Ferme la connexion à la base de données
 $conn->close();
 ?>

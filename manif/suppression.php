@@ -3,7 +3,7 @@ include('../DB/DB_connexion.php');
 
 session_start();
 
-// R�cup�rer le nom de la manifestation � supprimer depuis le param�tre de l'URL
+// Récupérer le nom de la manifestation à supprimer depuis le paramètre de l'URL
 $nomManifestation = $_GET['nomManifestation'];
 
    // Supprimer les enregistrements liés dans t_manif_avoir_lieu

@@ -1,4 +1,5 @@
 <?php
+include('../DB/liste_ajout.php');
 session_start();
 
 if (!isset($_SESSION['username'])) {
@@ -25,7 +26,7 @@ $benefice = $_GET['benefice'];
 <body>
     <div class="container">
         <br />
-        <h2>Modifier la manifestation</h2>
+        <h2>Modifier la manifestation -- PENSER A MODIFIER LISTES</h2>
         <form action="process_modifier.php" method="post">
             <input type="hidden" name="ancienNom" value="<?php echo $nomManifestation; ?>">
             <div class="form-group">
@@ -35,15 +36,35 @@ $benefice = $_GET['benefice'];
             <div class="form-group">
                 <label for="nouvelleDate">Nouvelle Date :</label>
                 <input type="date" id="nouvelleDate" name="nouvelleDate" value="<?php echo $date; ?>" required>
-            </div>
-            <div class="form-group">
-                <label for="nouveauLieu">Nouveau Lieu :</label>
-                <input type="text" id="nouveauLieu" name="nouveauLieu" value="<?php echo $lieu; ?>" required>
-            </div>
-            <div class="form-group">
-                <label for="nouveauType">Nouveau Type :</label>
-                <input type="text" id="nouveauType" name="nouveauType" value="<?php echo $type; ?>" required>
-            </div>
+                <div class="form-group">
+    <label for="nouveauLieu">Nouveau Lieu :</label>
+    <select id="nouveauLieu" name="nouveauLieu" required>
+        <?php
+        // Afficher les options pour Lieu
+        if ($resultLieu->num_rows > 0) {
+            while ($row = $resultLieu->fetch_assoc()) {
+                $selected = ($row["id_lieu"] == $lieu) ? "selected" : ""; // Vérifie si l'option correspond à la valeur actuelle
+                echo "<option value='" . $row["id_lieu"] . "' $selected>" . $row["NomLieu"] . "</option>";
+            }
+        }
+        ?>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="nouveauType">Nouveau Type :</label>
+    <select id="nouveauType" name="nouveauType" required>
+        <?php
+        // Afficher les options pour Type
+        if ($resultType->num_rows > 0) {
+            while ($row = $resultType->fetch_assoc()) {
+                $selected = ($row["id_type"] == $type) ? "selected" : ""; // Vérifie si l'option correspond à la valeur actuelle
+                echo "<option value='" . $row["id_type"] . "' $selected>" . $row["TypeManif"] . "</option>";
+            }
+        }
+        ?>
+    </select>
+</div>
            <div class="form-group">
                 <label for="nouveauBenefice">Nouveau Benefice :</label>
                 <input type="float" id="nouveauBenefice" name="nouveauBenefice" value="<?php echo $benefice; ?>" required>

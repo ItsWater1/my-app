@@ -25,7 +25,7 @@ if(isset($_POST['captcha'])){
                     $_SESSION['username'] = $username;
 
                     // Vérifier le niveau d'administration
-                    if ($row['Level'] == 3) {
+                    if ($row['Level'] == 1) {
                         header("Location: admin.php");
                         exit(); 
                     } else {

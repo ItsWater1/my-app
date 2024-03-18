@@ -1,4 +1,5 @@
 <?php
+include('../DB/liste_ajout.php');
 session_start();
 
 if (!isset($_SESSION['username'])) {
@@ -31,11 +32,29 @@ if (!isset($_SESSION['username'])) {
             </div>
             <div class="form-group">
                 <label for="Lieu">Lieu :</label>
-                <input type="text" id="Lieu" name="Lieu" required>
+                <select id="Lieu" name="Lieu" required>
+                    <?php
+                    // Afficher les options pour Lieu
+                    if ($resultLieu->num_rows > 0) {
+                        while ($row = $resultLieu->fetch_assoc()) {
+                            echo "<option value='" . $row["id_lieu"] . "'>" . $row["NomLieu"] . "</option>";
+                        }
+                    }
+                    ?>
+                </select>
             </div>
             <div class="form-group">
                 <label for="Type">Type :</label>
-                <input type="text" id="Type" name="Type" required>
+                <select id="Type" name="Type" required>
+                    <?php
+                    // Afficher les options pour Type
+                    if ($resultType->num_rows > 0) {
+                        while ($row = $resultType->fetch_assoc()) {
+                            echo "<option value='" . $row["id_type"] . "'>" . $row["TypeManif"] . "</option>";
+                        }
+                    }
+                    ?>
+                </select>
             </div>
             <button type="submit" class="btn btn-primary">Ajouter</button>
         </form>

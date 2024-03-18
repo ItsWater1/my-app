@@ -55,10 +55,7 @@ if (!isset($_SESSION['username'])) {
                data.forEach(row => {
             if (row.Benefice === null) {
                 row.Benefice = "Aucun";
-            } else if (row.Benefice === 0) {
-                row.Benefice = "Aucun";
-            }
-        });
+            }});
 
                 // Insère les données dans le tableau HTML
                 const tableBody = document.getElementById('table-body');

@@ -36,10 +36,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $newManifId = $conn->insert_id;
 
     // Insérer une nouvelle entrée dans la table t_manif_avoir_lieu
-    $queryLieu = "INSERT INTO t_manif_avoir_lieu (fk_manif, fk_lieu) VALUES (?, (SELECT id_lieu FROM t_lieu WHERE NomLieu = ?))";
+    $queryLieu = "INSERT INTO t_manif_avoir_lieu (fk_manif, fk_lieu) VALUES (?, ?)";
     
     $stmtLieu = $conn->prepare($queryLieu);
-    $stmtLieu->bind_param("ss", $newManifId, $lieu);
+    $stmtLieu->bind_param("is", $newManifId, $lieu);
+    
     $resultLieu = $stmtLieu->execute();
 
     if (!$resultLieu) {
@@ -48,18 +49,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $stmtLieu->close();
 
-    // Insérer une nouvelle entrée dans la table t_manif_avoir_lieu
-    $queryType = "INSERT INTO t_manif_avoir_type (fk_manif, fk_type) VALUES (?, (SELECT id_type FROM t_type WHERE TypeManif = ?))";
- 
+    // Insérer une nouvelle entrée dans la table t_manif_avoir_type
+    $queryType = "INSERT INTO t_manif_avoir_type (fk_manif, fk_type) VALUES (?, ?)";
+
     $stmtType = $conn->prepare($queryType);
-    $stmtType->bind_param("ss", $newManifId, $type);
+    $stmtType->bind_param("is", $newManifId, $type);
     $resultType = $stmtType->execute();
 
     if (!$resultType) {
-     die("Erreur lors de l'ajout du lieu : " . $stmtType->error);
+        die("Erreur lors de l'ajout du type : " . $stmtType->error);
     }
 
     $stmtType->close();
+
     $conn->close();
 
     header("Location: ../admin.php");

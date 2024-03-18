@@ -24,7 +24,7 @@ $user = $_GET['user'];
         <?php echo "<h2>Modifier le mot de passe de : $user</h2>";?>
         <form action="user_mdp_process_modifier.php" method="post">
             <div class="form-group">
-                <label for="nouveauMDP">Nouveau Mot de passe :</label>
+                <label for="nouveauMDP">Nouveau mot de passe :</label>
                 <input type="text" id="nouveauMDP" name="nouveauMDP"required>
             </div>
             <input type="hidden" name="user" value="<?php echo $user; ?>">

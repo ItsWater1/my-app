@@ -14,7 +14,7 @@ include('/DB/requeterss.php');
     <channel>
         <title>Mon site</title>
         <?php if ($closestDate) { ?>
-            <lastBuildDate>Prochaine manifestation : <?= date('D, d M Y', strtotime($closestDate)) ?></lastBuildDate>
+            <lastBuildDate>Prochaine manifestation : <?= date(' d M Y', strtotime($closestDate)) ?></lastBuildDate>
         <?php } ?>
         <?php while ($a = $manif->fetch_assoc()) { ?>
             <item>

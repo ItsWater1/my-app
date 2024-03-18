@@ -38,7 +38,7 @@ if (!isset($_SESSION['username'])) {
             var currentDate = new Date();
             var currentYear = currentDate.getFullYear();
             var currentMonth = currentDate.getMonth();
-            var currentView = 'month'; // Default view
+            var currentView = 'month'; 
 
             // Récupère les données depuis le fichier PHP
             fetch('DB/calendrier.php')
@@ -98,7 +98,7 @@ if (!isset($_SESSION['username'])) {
         }
     }
 
-                document.getElementById("monthYear").textContent = new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric' }).format(new Date(year, month));
+                document.getElementById("monthYear").textContent = new Intl.DateTimeFormat('fr-FR', { month: 'long', year: 'numeric' }).format(new Date(year, month));
             }
 
             function selectDay(cell) {

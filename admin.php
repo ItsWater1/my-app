@@ -30,7 +30,7 @@ if (!isset($_SESSION['username'])) {
                     <th>Manifestation</th>
                     <th>Date</th>
                     <th>Lieu</th>
-                    <th>Type Manifestation</th>
+                    <th>Type</th>
                     <th>Bénéfice</th>
                     <th>Action</th>
                 </tr>

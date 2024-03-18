@@ -25,7 +25,10 @@ $user = $_GET['user'];
         <form action="user_lvl_process_modifier.php" method="post">
             <div class="form-group">
                 <label for="nouveaulvl">Nouveau niveau de droits :</label>
-                <input type="text" id="nouveaulvl" name="nouveaulvl"required>
+                <select id="nouveaulvl" name="nouveaulvl"required>
+                    <option>0</option>
+                    <option>1</option>
+                </select>
             </div>
             <input type="hidden" name="user" value="<?php echo $user; ?>">
             <button type="submit" class="btn btn-primary">Modifier</button>

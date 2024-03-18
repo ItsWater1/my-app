@@ -43,3 +43,14 @@ body {
     border: 2px solid #ffc107;
 }
 
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: inline-block;
+    width: 150px; /* Définir une largeur fixe pour les étiquettes */
+    text-align: right; /* Aligner le texte des étiquettes à droite */
+    margin-right: 10px; /* Ajouter un espacement à droite entre l'étiquette et le champ de saisie */
+}
+

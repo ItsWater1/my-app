@@ -18,9 +18,9 @@ USE module151_jeunesse;
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mer 13 Mars 2024 à 09:18
+-- Généré le :  Lun 18 Mars 2024 à 14:38
 -- Version du serveur :  5.7.11
--- Version de PHP :  7.0.3
+-- Version de PHP :  5.6.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -167,9 +167,9 @@ CREATE TABLE `t_utilisateur` (
 --
 
 INSERT INTO `t_utilisateur` (`id_utilisateur`, `user`, `Mdp`, `Level`) VALUES
-(1, 'admin', 'edb0ae31b7c16790842d4fc5aeb11b93c6353fba35e34609418265a97663bb48', 3),
-(2, 'utilisateur', 'e9fa5be04a0299bef88a7f89d4489a070aa298894cfdf8a4ef47f599592d0450', 1),
-(3, 'angelo.rogeiro@eduvaud.ch', '0dd92ed8e5681b5e75e5b04e2a2e517ba6ec1c4eba0834743d0d224cad16914e', 3);
+(1, 'admin', 'edb0ae31b7c16790842d4fc5aeb11b93c6353fba35e34609418265a97663bb48', 1),
+(2, 'utilisateur', 'e9fa5be04a0299bef88a7f89d4489a070aa298894cfdf8a4ef47f599592d0450', 0),
+(3, 'angelo.rogeiro@eduvaud.ch', '0dd92ed8e5681b5e75e5b04e2a2e517ba6ec1c4eba0834743d0d224cad16914e', 1);
 
 --
 -- Index pour les tables exportées

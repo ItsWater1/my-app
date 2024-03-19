@@ -43,30 +43,40 @@ $benefice = $_GET['benefice'];
                 <label for="nouveauLieu">Nouveau Lieu :</label>
                 <select id="nouveauLieu" name="nouveauLieu" required>
                     <?php
-                    // Afficher les options pour Lieu
+                    // Afficher l'option pour $lieu en premier
+                    echo "<option value='$lieu' selected>$lieu</option>";
+
+                    // Afficher les autres options pour Lieu
                     if ($resultLieu->num_rows > 0) {
                         while ($row = $resultLieu->fetch_assoc()) {
-                            $selected = ($row["id_lieu"] == $lieu) ? "selected" : ""; // Vérifie si l'option correspond à la valeur actuelle
-                            echo "<option value='" . $row["id_lieu"] . "' $selected>" . $row["NomLieu"] . "</option>";
+                            if ($row["id_lieu"] != $lieu) {
+                                echo "<option value='" . $row["id_lieu"] . "'>" . $row["NomLieu"] . "</option>";
+                            }
                         }
                     }
                     ?>
                 </select>
             </div>
+
             <div class="form-group">
                 <label for="nouveauType">Nouveau Type :</label>
                 <select id="nouveauType" name="nouveauType" required>
                     <?php
-                    // Afficher les options pour Type
+                    // Afficher l'option pour $type en premier
+                    echo "<option value='$type' selected>$type</option>";
+
+                    // Afficher les autres options pour type
                     if ($resultType->num_rows > 0) {
-                        while ($row = $resultType->fetch_assoc()) {
-                            $selected = ($row["id_type"] == $type) ? "selected" : ""; // Vérifie si l'option correspond à la valeur actuelle
-                            echo "<option value='" . $row["id_type"] . "' $selected>" . $row["TypeManif"] . "</option>";
+                        while ($row = $resultLieu->fetch_assoc()) {
+                            if ($row["id_type"] != $type) {
+                                echo "<option value='" . $row["id_type"] . "'>" . $row["TypeManif"] . "</option>";
+                            }
                         }
                     }
                     ?>
                 </select>
             </div>
+
             <div class="form-group">
                 <label for="nouveauBenefice">Nouveau Bénéfice :</label>
                 <input type="text" id="nouveauBenefice" name="nouveauBenefice" required>

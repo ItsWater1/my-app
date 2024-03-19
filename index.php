@@ -1,4 +1,7 @@
 <?php
+include('ressources/nav.php');
+include('ressources/footer.php');
+
 session_start();
 if (!isset($_SESSION['username'])) {
     header("Location: login.php");
@@ -18,13 +21,12 @@ if (!isset($_SESSION['username'])) {
 
 </head>
 <body>
-    <?php include('ressources/nav.php');?>
-
     <div class="container">
         <br/>
-        <h2>Jeunesse Treycovagnes - Chamblon 2024</h2>
+            <h2>Jeunesse Treycovagnes - Chamblon 2024</h2>
         <br/>
-        <?php include('fluxrss.php');?>
+
+        <?php include('fluxrss.php'); ?>
 
         <table class="table">
             <thead>
@@ -69,6 +71,5 @@ if (!isset($_SESSION['username'])) {
             })
             .catch(error => console.error('Erreur lors de la récupération des données:', error));
     </script>
-             <?php include('ressources/footer.php'); ?>
 </body>
 </html>

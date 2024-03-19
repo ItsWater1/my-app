@@ -16,6 +16,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="calendar.php">Vue "Calendrier"</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="album.php">Album photo</a>
+                    </li>
                 </ul>
             </div>
         </div>

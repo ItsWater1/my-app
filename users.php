@@ -1,6 +1,8 @@
 <?php
-session_start();
+include('ressources/nav_adm.php');
+include('ressources/footer.php');
 
+session_start();
 if (!isset($_SESSION['username'])) {
     header("Location: login.php");
     exit();
@@ -19,8 +21,6 @@ if (!isset($_SESSION['username'])) {
     
 </head>
 <body>
-<?php include('ressources/nav_adm.php');?>
-
 <div class="container">
         <br />
         <h2>Gestion des utilisateurs</h2>
@@ -74,7 +74,5 @@ if (!isset($_SESSION['username'])) {
             <div class="text-center">
             <a href="user/user_create.php" class="btn btn-lg btn-success">Créer un utilisateur</a>
             </div>
-
-<?php include('ressources/footer.php');?>
 </body>
 </html>

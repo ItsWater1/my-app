@@ -27,7 +27,7 @@ $benefice = $_GET['benefice'];
 <body>
     <div class="container">
         <br/>
-        <h2>Modifier la manifestation -- PENSER A MODIFIER LISTES</h2>
+        <h2>Modifier la manifestation</h2>
         <form action="process_modifier.php" method="post" id="modifierForm">
             <input type="hidden" name="ancienNom" value="<?php echo $nomManifestation; ?>">
             <div class="form-group">

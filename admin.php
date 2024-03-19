@@ -1,4 +1,7 @@
 <?php
+include('ressources/nav_adm.php');
+include('ressources/footer.php');
+
 session_start();
 if (!isset($_SESSION['username'])) {
     header("Location: login.php");
@@ -18,8 +21,6 @@ if (!isset($_SESSION['username'])) {
     
 </head>
 <body>
-    <?php include('ressources/nav_adm.php');?>
-
     <div class="container">
         <br />
         <h2>Gestion des manifestations</h2>
@@ -81,6 +82,5 @@ if (!isset($_SESSION['username'])) {
     <div class="text-center">
         <a href="manif/ajout.php" class="btn btn-lg btn-success">Ajouter une manifestation</a>
     </div>
-        <?php include('ressources/footer.php'); ?>
 </body>
 </html>

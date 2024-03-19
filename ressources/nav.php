@@ -1,5 +1,5 @@
  <head>
- <link rel="shortcut icon" type="image/x-icon" href="images/logo.png" />
+ <link rel="shortcut icon" type="image/x-icon" href="/my-app/images/logo.png" />
 </head>
  
  <!-- Navbar -->
@@ -15,13 +15,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php">Vue "Tableau"</a>
+                        <a class="nav-link" href="/my-app/index.php">Vue "Tableau"</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="calendar.php">Vue "Calendrier"</a>
+                        <a class="nav-link" href="/my-app/calendar.php">Vue "Calendrier"</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="album.php">Album photo</a>
+                        <a class="nav-link" href="/my-app/album.php">Album photo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/my-app/album/uploadform.php">Ajouter une photo</a>
                     </li>
                 </ul>
             </div>

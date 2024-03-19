@@ -34,4 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Une erreur s'est produite lors du téléversement de l'image.";
     }
 }
+    header("Location: uploadForm.php");
+    exit();
 ?>

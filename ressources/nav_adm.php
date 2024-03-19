@@ -1,5 +1,5 @@
 <head>
- <link rel="shortcut icon" type="image/x-icon" href="images/logo.png" />
+ <link rel="shortcut icon" type="image/x-icon" href="/my-app/images/logo.png" />
 </head>
  
  <!-- Navbar -->

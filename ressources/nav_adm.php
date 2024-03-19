@@ -1,3 +1,7 @@
+<head>
+ <link rel="shortcut icon" type="image/x-icon" href="images/logo.png" />
+</head>
+ 
  <!-- Navbar -->
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">

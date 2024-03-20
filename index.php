@@ -4,7 +4,7 @@ include('ressources/footer.php');
 
 session_start();
 if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
+    header("Location: /my-app/login.php");
     exit();
 }
 ?>
@@ -49,7 +49,7 @@ if (!isset($_SESSION['username'])) {
 
     <script>
         // Récupère les données depuis le fichier PHP
-        fetch('DB/tableau.php')
+        fetch('/my-app/DB/tableau.php')
             .then(response => response.json())
             .then(data => {
 

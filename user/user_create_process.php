@@ -3,7 +3,7 @@ include('../DB/DB_connexion.php');
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    header("Location: ../login.php");
+    header("Location: /my-app/login.php");
     exit();
 }
 
@@ -32,6 +32,6 @@ if ($stmt->execute()) {
 
  $conn->close();
 
-header("Location: ../users.php");
+header("Location: /my-app/users.php");
 exit();
 ?>

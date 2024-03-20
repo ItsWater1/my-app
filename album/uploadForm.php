@@ -5,12 +5,12 @@ include('../ressources/footer.php');
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    header("Location: ../login.php");
+    header("Location: /my-app/login.php");
     exit();
 }
 
 include('../DB/DB_connexion.php'); // Inclure le fichier de connexion à la base de données
-include('imageModel.php'); // Assurez-vous que le chemin est correct
+include('../album/imageModel.php'); 
 
 // Récupérer la liste des lieux depuis la base de données
 $listeLieux = array();
@@ -31,7 +31,7 @@ if ($result->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulaire d'album photo</title>
-    <link rel="shortcut icon" type="image/x-icon" href="../images/logo.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="/my-app/images/logo.png" />
     <!-- Liens Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>

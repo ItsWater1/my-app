@@ -26,10 +26,10 @@ if(isset($_POST['captcha'])){
 
                     // Vérifier le niveau d'administration
                     if ($row['Level'] == 1) {
-                        header("Location: admin.php");
+                        header("Location: /my-app/admin.php");
                         exit(); 
                     } else {
-                        header("Location: index.php");
+                        header("Location: /my-app/index.php");
                         exit(); 
                     }
                 } else {
@@ -46,6 +46,6 @@ if(isset($_POST['captcha'])){
 
 // JavaScript pour afficher la boîte de dialogue d'erreur si nécessaire et rediriger vers login.php
 if(!empty($error_message)) {
-    echo "<script>alert('$error_message'); window.location.href = 'login.php';</script>";
+    echo "<script>alert('$error_message'); window.location.href = '/my-app/login.php';</script>";
 }
 ?>

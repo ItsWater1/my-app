@@ -1,6 +1,6 @@
 <?php 
 // Inclure le fichier de connexion à la base de données
-include('DB_connexion.php');
+include('/DB_connexion.php');
 
 // Requête pour récupérer les lieux
 $sqlLieu = "SELECT * FROM t_lieu";

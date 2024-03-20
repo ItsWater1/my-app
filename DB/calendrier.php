@@ -1,5 +1,5 @@
 <?php
-include 'DB_connexion.php';
+include ('DB_connexion.php');
 
 // Exécute la requête SQL
 $sql = "SELECT

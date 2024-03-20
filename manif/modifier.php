@@ -3,7 +3,7 @@ include('../DB/liste_ajout.php');
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    header("Location: ../login.php");
+    header("Location: /my-app/login.php");
     exit();
 }
 
@@ -19,7 +19,7 @@ $benefice = $_GET['benefice'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="../images/logo.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="/my-app/images/logo.png" />
     <title>Modifier la manifestation</title>
     <link rel="stylesheet" type="text/css" href="../ressources/styles.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -28,7 +28,7 @@ $benefice = $_GET['benefice'];
     <div class="container">
         <br/>
         <h2>Modifier la manifestation</h2>
-        <form action="process_modifier.php" method="post" id="modifierForm">
+        <form action="/my-app/manif/process_modifier.php" method="post" id="modifierForm">
             <input type="hidden" name="ancienNom" value="<?php echo $nomManifestation; ?>">
             <div class="form-group">
                 <label for="nouveauNom">Nouveau Nom :</label>
@@ -67,7 +67,7 @@ $benefice = $_GET['benefice'];
 
                     // Afficher les autres options pour type
                     if ($resultType->num_rows > 0) {
-                        while ($row = $resultLieu->fetch_assoc()) {
+                        while ($row = $resultType->fetch_assoc()) {
                             if ($row["id_type"] != $type) {
                                 echo "<option value='" . $row["id_type"] . "'>" . $row["TypeManif"] . "</option>";
                             }

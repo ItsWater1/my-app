@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    header("Location: ../login.php");
+    header("Location: /my-app/login.php");
     exit();
 }
 ?>
@@ -12,16 +12,16 @@ if (!isset($_SESSION['username'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="../images/logo.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="/my-app/images/logo.png" />
     <title>Création d'utilisateur</title>
-    <link rel="stylesheet" type="text/css" href="../ressources/styles.css" />
+    <link rel="stylesheet" type="text/css" href="/my-app/ressources/styles.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
     <div class="container">
-        <br />
+        <br/>
         <?php echo "<h2>Création d'un nouvel utilisateur</h2>";?>
-        <form action="user_create_process.php" method="post" id="addUser">
+        <form action="/my-app/user/user_create_process.php" method="post" id="addUser">
             <div class="form-group">
                 <label for="user">Nom d'utilisateur :</label>
                 <input type="text" id="user" name="user" required>

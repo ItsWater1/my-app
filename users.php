@@ -4,7 +4,7 @@ include('ressources/footer.php');
 
 session_start();
 if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
+    header("Location: /my-app/login.php");
     exit();
 }
 ?>
@@ -44,7 +44,7 @@ if (!isset($_SESSION['username'])) {
 
     <script>
         // Récupère les données depuis le fichier PHP
-        fetch('DB/user_afficher.php')
+        fetch('/my-app/DB/user_afficher.php')
             .then(response => response.json())
             .then(data => {
 
@@ -71,7 +71,7 @@ if (!isset($_SESSION['username'])) {
     </script>
 
             <div class="text-center">
-            <a href="user/user_create.php" class="btn btn-lg btn-success">Créer un utilisateur</a>
+            <a href="/my-app/user/user_create.php" class="btn btn-lg btn-success">Créer un utilisateur</a>
             </div>
 </body>
 </html>

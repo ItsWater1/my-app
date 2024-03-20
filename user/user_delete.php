@@ -18,6 +18,6 @@ $user = $_GET['user'];
     $conn->close();
 
     // Rediriger vers la page d'index après la suppression
-    header("Location: ../users.php");
+    header("Location: /my-app/users.php");
     exit();
 ?>

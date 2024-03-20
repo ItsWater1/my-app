@@ -3,7 +3,7 @@ include('../DB/DB_connexion.php');
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    header("Location: ../login.php");
+    header("Location: /my-app/login.php");
     exit();
 }
 
@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $conn->close();
 
-    header("Location: ../admin.php");
+    header("Location: /my-app/admin.php");
     exit();
 }
 ?>

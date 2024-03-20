@@ -3,7 +3,7 @@ include('../DB/DB_connexion.php');
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    header("Location: ../login.php");
+    header("Location: /my-app/login.php");
     exit();
 }
     // Récupérer les données
@@ -64,6 +64,6 @@ if (!isset($_SESSION['username'])) {
 
     $conn->close();
 
-    header("Location: ../admin.php");
+    header("Location: /my-app/admin.php");
     exit();
 ?>

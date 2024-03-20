@@ -27,7 +27,8 @@ class ImageModel {
         $sql = "SELECT t_image.id_image, t_image.filename, t_image.date, t_lieu.NomLieu 
                 FROM t_image 
                 INNER JOIN t_image_avoir_lieu ON t_image.id_image = t_image_avoir_lieu.fk_image 
-                INNER JOIN t_lieu ON t_image_avoir_lieu.fk_lieuimage = t_lieu.id_lieu";
+                INNER JOIN t_lieu ON t_image_avoir_lieu.fk_lieuimage = t_lieu.id_lieu
+                ORDER BY Date";
     
         $result = $this->conn->query($sql);
     

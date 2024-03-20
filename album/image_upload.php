@@ -4,7 +4,7 @@ include('imageModel.php');
 
 session_start();
 if (!isset($_SESSION['username'])) {
-    header("Location: ../login.php");
+    header("Location: /my-app/login.php");
     exit();
 }
 
@@ -34,6 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Une erreur s'est produite lors du téléversement de l'image.";
     }
 }
-    header("Location: uploadForm.php");
+    header("Location: /my-app/album/uploadForm.php");
     exit();
 ?>

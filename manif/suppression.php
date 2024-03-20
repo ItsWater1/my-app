@@ -35,6 +35,6 @@ $nomManifestation = $_GET['nomManifestation'];
     $conn->close();
 
     // Rediriger vers la page d'index après la suppression
-    header("Location: ../admin.php");
+    header("Location: /my-app/admin.php");
     exit();
 ?>

@@ -1,12 +1,12 @@
 <?php
 include('ressources/nav.php');
 include('ressources/footer.php');
-include('DB/DB_connexion.php'); // Inclure le fichier de connexion à la base de données
-include('album/imageModel.php'); // Assurez-vous que le chemin est correct
+include('DB/DB_connexion.php'); 
+include('album/imageModel.php'); 
 
 session_start();
 if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
+    header("Location: /my-app/login.php");
     exit();
 }
 ?>
@@ -17,9 +17,8 @@ if (!isset($_SESSION['username'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualisation de l'album photo</title>
-    <link rel="shortcut icon" type="image/x-icon" href="images/logo.png" />
     <!-- Liens Bootstrap -->
-    <link rel="stylesheet" href="ressources/album.css">
+    <link rel="stylesheet" href="/my-app/ressources/album.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -48,7 +47,7 @@ if (!isset($_SESSION['username'])) {
                 // Modal for large image
                 echo '<div class="image-modal" id="imageModal' . $image['id_image'] . '">';
                 echo '<span class="close" onclick="closeModal(' . $image['id_image'] . ')">&times;</span>';
-                echo '<img class="image-modal-content" src="album/uploads/' . $image['filename'] . '" alt="Photo">';
+                echo '<img class="image-modal-content" src="/my-app/album/uploads/' . $image['filename'] . '" alt="Photo">';
                 echo '</div>';
             }
         ?>
@@ -68,7 +67,6 @@ if (!isset($_SESSION['username'])) {
             $('#imageModal' + id).css('display', 'none');
         }
     </script>
-    <?php include('ressources/footer.php'); ?>
 </body>
 </html>
 

@@ -64,7 +64,11 @@ if (!isset($_SESSION['username'])) {
                 const tableBody = document.getElementById('table-body');
                 data.forEach(row => {
                     const tr = document.createElement('tr');
-                    tr.innerHTML = `<td>${row.NomManifestation}</td><td>${row.Date}</td><td>${row.NomLieu}</td><td>${row.TypeManif}</td><td>${row.Benefice}</td>`;
+                    tr.innerHTML = `<td>${row.NomManifestation}</td>
+                    <td>${row.Date}</td>
+                    <td>${row.NomLieu}</td>
+                    <td>${row.TypeManif}</td>
+                    <td>${row.Benefice}</td>`;
                     tableBody.appendChild(tr);
                 });
             })

@@ -27,9 +27,10 @@ if (!isset($_SESSION['username'])) {
     <h2 class="text-center mb-4">Album photo</h2>
     <div class="row justify-content-center">
         <?php
+            // Définir le fuseau horaire
+            date_default_timezone_set('Europe/Zurich');
             // Créer une instance du modèle
             $imageModel = new ImageModel($conn);
-
             // Récupérer toutes les images
             $images = $imageModel->getAllImages();
 
@@ -39,7 +40,7 @@ if (!isset($_SESSION['username'])) {
                 echo '<div class="image-container">';
                 echo '<img src="album/uploads/' . $image['filename'] . '" alt="Photo" class="img-thumbnail" data-toggle="modal" data-target="#imageModal' . $image['id_image'] . '">';
                 echo '<div class="image-details">';
-                echo '<p><strong>Date :</strong> ' . $image['date'] . '</p>';
+                echo '<p><strong>Date :</strong> ' . date('d.m.Y', strtotime($image['date'])) . '</p>';
                 echo '<p><strong>Lieu :</strong> ' . $image['NomLieu'] . '</p>';
                 echo '</div>'; // Fermeture de la div "image-details"
                 echo '</div>'; // Fermeture de la div "image-container"

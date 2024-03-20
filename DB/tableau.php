@@ -4,7 +4,7 @@ include 'DB_connexion.php';
 // Exécute la requête SQL
 $sql = "SELECT
     m.Nom AS NomManifestation,
-    m.Date,
+    DATE_FORMAT(m.Date, '%d.%m.%Y') AS Date,
     m.Benefice,
     l.NomLieu,
     t.TypeManif

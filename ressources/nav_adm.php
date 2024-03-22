@@ -19,6 +19,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/my-app/users.php">Gestion des utilisateurs</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/my-app/album/image_admin.php">Gestion des images</a>
+                    </li>
                 </ul>
             </div>
         </div>

@@ -10,14 +10,11 @@ if (!isset($_SESSION['username'])) {
 }
 
 include('../DB/DB_connexion.php'); // Inclure le fichier de connexion à la base de données
-include('../album/imageModel.php'); 
-
+include('imageModel.php'); 
 // Récupérer la liste des lieux depuis la base de données
 $listeLieux = array();
-
 $sql = "SELECT * FROM t_lieu"; // Sélectionner tous les lieux
 $result = $conn->query($sql);
-
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $listeLieux[] = $row; // Ajouter chaque lieu à la liste
@@ -31,7 +28,6 @@ if ($result->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulaire d'album photo</title>
-    <link rel="shortcut icon" type="image/x-icon" href="/my-app/images/logo.png" />
     <!-- Liens Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -77,3 +73,4 @@ if ($result->num_rows > 0) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+                        

@@ -34,6 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Une erreur s'est produite lors du téléversement de l'image.";
     }
 }
-    header("Location: /my-app/album/uploadForm.php");
+    header("Location: /my-app/album/upload_Form.php");
     exit();
 ?>

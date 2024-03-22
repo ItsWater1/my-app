@@ -40,5 +40,27 @@ class ImageModel {
     
         return $images;
     }
+
+    public function deleteImage($image_id) {
+        // Supprimer l'image de la base de données
+        $stmt = $this->conn->prepare("DELETE FROM t_image WHERE id_image = ?");
+        $stmt->bind_param("i", $image_id);
+        $success = $stmt->execute();
+        $stmt->close();
+    
+        return $success;
+    }
+
+    public function getImageFilename($image_id) {
+        $stmt = $this->conn->prepare("SELECT filename FROM t_image WHERE id_image = ?");
+        $stmt->bind_param("i", $image_id);
+        $stmt->execute();
+        $stmt->bind_result($filename);
+        $stmt->fetch();
+        $stmt->close();
+    
+        return $filename;
+    }
+    
 }
 ?>

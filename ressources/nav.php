@@ -25,7 +25,7 @@
                         <a class="nav-link" href="/my-app/album.php">Album photo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/my-app/album/uploadform.php">Ajouter une photo</a>
+                        <a class="nav-link" href="/my-app/album/upload_form.php">Ajouter une photo</a>
                     </li>
                 </ul>
             </div>

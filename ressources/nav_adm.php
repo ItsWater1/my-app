@@ -22,6 +22,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/my-app/album/image_admin.php">Gestion des images</a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/my-app/index.php">Interface utilisateur</a>
+                    </li>
                 </ul>
             </div>
         </div>

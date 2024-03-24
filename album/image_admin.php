@@ -6,7 +6,7 @@ if (!isset($_SESSION['username'])) {
 }
 
 include('../DB/DB_connexion.php');
-include('../ressources/nav.php');
+include('../ressources/nav_adm.php');
 include('../ressources/footer.php');
 include('imageModel.php');
 

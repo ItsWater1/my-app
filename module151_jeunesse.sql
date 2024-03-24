@@ -1,9 +1,26 @@
+-- OM 2021.02.17
+-- FICHIER MYSQL POUR FAIRE FONCTIONNER LES EXEMPLES
+-- DE REQUETES MYSQL
+-- Database: WUTHRICH_ARTHUR_INFO1A_JEUNESSE_164_2022
+
+-- Détection si une autre base de donnée du même nom existe
+
+DROP DATABASE IF EXISTS module151_jeunesse;
+
+-- Création d'un nouvelle base de donnée
+
+CREATE DATABASE IF NOT EXISTS module151_jeunesse;
+
+-- Utilisation de cette base de donnée
+
+USE module151_jeunesse;
+
 -- phpMyAdmin SQL Dump
 -- version 4.5.4.1
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Ven 22 Mars 2024 à 11:25
+-- Généré le :  Sam 11 Juin 2022 à 11:42
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.18
 

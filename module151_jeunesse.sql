@@ -1,5 +1,7 @@
--- AW 2023.13.03
--- Database: module151_jeunesse
+-- OM 2021.02.17
+-- FICHIER MYSQL POUR FAIRE FONCTIONNER LES EXEMPLES
+-- DE REQUETES MYSQL
+-- Database: WUTHRICH_ARTHUR_INFO1A_JEUNESSE_164_2022
 
 -- Détection si une autre base de donnée du même nom existe
 
@@ -18,7 +20,7 @@ USE module151_jeunesse;
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Lun 18 Mars 2024 à 14:38
+-- Généré le :  Sam 11 Juin 2022 à 11:42
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.18
 
@@ -38,6 +40,30 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `t_image`
+--
+
+CREATE TABLE `t_image` (
+  `id_image` int(11) NOT NULL,
+  `filename` varchar(100) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `t_image_avoir_lieu`
+--
+
+CREATE TABLE `t_image_avoir_lieu` (
+  `id_image_avoir_lieu` int(11) NOT NULL,
+  `fk_image` int(11) NOT NULL,
+  `fk_lieuimage` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `t_lieu`
 --
 
@@ -52,7 +78,8 @@ CREATE TABLE `t_lieu` (
 
 INSERT INTO `t_lieu` (`id_lieu`, `NomLieu`) VALUES
 (1, 'Treycovagnes'),
-(2, 'Chamblon');
+(2, 'Chamblon'),
+(3, 'Champagne');
 
 -- --------------------------------------------------------
 
@@ -96,7 +123,7 @@ CREATE TABLE `t_manif_avoir_lieu` (
 --
 
 INSERT INTO `t_manif_avoir_lieu` (`id_manif_avoir_lieu`, `fk_manif`, `fk_lieu`) VALUES
-(1, 1, 1),
+(1, 1, 2),
 (2, 2, 2),
 (3, 3, 2),
 (4, 4, 1),
@@ -168,12 +195,26 @@ CREATE TABLE `t_utilisateur` (
 
 INSERT INTO `t_utilisateur` (`id_utilisateur`, `user`, `Mdp`, `Level`) VALUES
 (1, 'admin', 'edb0ae31b7c16790842d4fc5aeb11b93c6353fba35e34609418265a97663bb48', 1),
-(2, 'utilisateur', 'e9fa5be04a0299bef88a7f89d4489a070aa298894cfdf8a4ef47f599592d0450', 0),
-(3, 'angelo.rogeiro@eduvaud.ch', '0dd92ed8e5681b5e75e5b04e2a2e517ba6ec1c4eba0834743d0d224cad16914e', 1);
+(3, 'angelo.rogeiro@eduvaud.ch', '0dd92ed8e5681b5e75e5b04e2a2e517ba6ec1c4eba0834743d0d224cad16914e', 1),
+(4, 'user', 'e9fa5be04a0299bef88a7f89d4489a070aa298894cfdf8a4ef47f599592d0450', 0);
 
 --
 -- Index pour les tables exportées
 --
+
+--
+-- Index pour la table `t_image`
+--
+ALTER TABLE `t_image`
+  ADD PRIMARY KEY (`id_image`);
+
+--
+-- Index pour la table `t_image_avoir_lieu`
+--
+ALTER TABLE `t_image_avoir_lieu`
+  ADD PRIMARY KEY (`id_image_avoir_lieu`),
+  ADD KEY `fk_image` (`fk_image`),
+  ADD KEY `fk_lieuimage` (`fk_lieuimage`);
 
 --
 -- Index pour la table `t_lieu`
@@ -220,10 +261,20 @@ ALTER TABLE `t_utilisateur`
 --
 
 --
+-- AUTO_INCREMENT pour la table `t_image`
+--
+ALTER TABLE `t_image`
+  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `t_image_avoir_lieu`
+--
+ALTER TABLE `t_image_avoir_lieu`
+  MODIFY `id_image_avoir_lieu` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT pour la table `t_lieu`
 --
 ALTER TABLE `t_lieu`
-  MODIFY `id_lieu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_lieu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `t_manif`
 --
@@ -248,10 +299,17 @@ ALTER TABLE `t_type`
 -- AUTO_INCREMENT pour la table `t_utilisateur`
 --
 ALTER TABLE `t_utilisateur`
-  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Contraintes pour les tables exportées
 --
+
+--
+-- Contraintes pour la table `t_image_avoir_lieu`
+--
+ALTER TABLE `t_image_avoir_lieu`
+  ADD CONSTRAINT `fk_image` FOREIGN KEY (`fk_image`) REFERENCES `t_image` (`id_image`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_lieuimage` FOREIGN KEY (`fk_lieuimage`) REFERENCES `t_lieu` (`id_lieu`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `t_manif_avoir_lieu`

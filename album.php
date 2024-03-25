@@ -16,34 +16,55 @@ date_default_timezone_set('Europe/Zurich');
 
 $imageModel = new ImageModel($conn);
 
+
+// Récupérer les dates distinctes 
+$listeDates = $imageModel->getDistinctYears();
+
 // Récupérer les lieux distincts
 $listeLieux = $imageModel->getDistinctLieux();
 
-// Obtenez l'année actuelle
-$currentYear = date('Y');
+// Initialisation des variables
+$lieuFilter = null;
+$anneeFilter = null;
 
-// Créez un tableau d'années de 2016 à l'année actuelle
-$years = range(2016, $currentYear);
+// Vérifie que les variables sont instanciées
+if(isset($_GET['lieu'])) {
+    $lieuFilter = $_GET['lieu'];
+}
+if(isset($_GET['annee'])) {
+    $anneeFilter = $_GET['annee'];
+}
 
-// Inversez le tableau pour afficher les années dans l'ordre décroissant
-$years = array_reverse($years);
+// Initialisation du tableau (vide)
+$images = array();
 
-// Récupérer les paramètres de filtrage s'ils ont été soumis
-$lieuFilter = isset($_GET['lieu']) ? $_GET['lieu'] : null;
-$anneeFilter = isset($_GET['annee']) ? $_GET['annee'] : null;
-
-// Ajoutez le code de débogage ici
-echo "Année filtrée : " . $anneeFilter;
-
-// Récupérer les images en fonction des paramètres de filtrage
+// Filtre par localisation
 if ($lieuFilter !== null) {
     $images = $imageModel->getByLocation($lieuFilter);
-} elseif ($anneeFilter !== null) {
-    $images = $imageModel->getByYear($anneeFilter);
 } else {
+    // Si aucun filtre par lieu n'est spécifié, récupérer toutes les images
     $images = $imageModel->getAllImages();
 }
+
+// Filtre par année (check du filtre par lieu)
+if ($anneeFilter !== null && !empty($images)) {
+    $images = array_filter($images, function($image) use ($anneeFilter) {
+        // Vérifier si l'année de l'image correspond à l'année filtrée
+        return substr($image['date'], 0, 4) == $anneeFilter;
+    });
+}
+
+
+// 
+if (empty($images)) {
+    if ($lieuFilter !== null) {
+        $images = $imageModel->getByLocation($lieuFilter);
+    } else {
+        $images = $imageModel->getAllImages();
+    }
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -73,16 +94,16 @@ if ($lieuFilter !== null) {
             </select>
         </div>
         <div class="col-md-6">
-            <label for="selectAnnee" class="form-label">Filtrer par année :</label>
-            <select name="annee" id="selectAnnee" class="form-control">
-                <option value="">Toutes les années</option>
-                <?php foreach ($years as $year): ?>
-                    <option value="<?= $year ?>" <?= ($anneeFilter == $year) ? 'selected' : '' ?>>
-                        <?= $year ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
-        </div>
+    <label for="selectAnnee" class="form-label">Filtrer par année :</label>
+    <select name="annee" id="selectAnnee" class="form-control">
+        <option value="">Toutes les années</option>
+        <?php foreach ($listeDates as $year): ?>
+            <option value="<?= $year ?>" <?= ($anneeFilter == $year) ? 'selected' : '' ?>>
+                <?= $year ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+</div>
     </div>
     <button type="submit" class="btn btn-primary mt-3">Filtrer</button>
 </form>

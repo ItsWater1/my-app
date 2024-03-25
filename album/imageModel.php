@@ -22,6 +22,28 @@ class ImageModel {
         $stmt->close();
     }
 
+    // Supprimer une image
+    public function deleteImage($image_id) {
+        $stmt = $this->conn->prepare("DELETE FROM t_image WHERE id_image = ?");
+        $stmt->bind_param("i", $image_id);
+        $success = $stmt->execute();
+        $stmt->close();
+
+        return $success;
+    }
+
+    // Obtenir le nom du fichier
+    public function getImageFilename($image_id) {
+        $stmt = $this->conn->prepare("SELECT filename FROM t_image WHERE id_image = ?");
+        $stmt->bind_param("i", $image_id);
+        $stmt->execute();
+        $stmt->bind_result($filename);
+        $stmt->fetch();
+        $stmt->close();
+
+        return $filename;
+    }
+
     public function getByLocation($lieu) {
         $images = array();
         $sql = "SELECT t_image.id_image, t_image.filename, t_image.date, t_lieu.NomLieu 
@@ -29,6 +51,9 @@ class ImageModel {
                 INNER JOIN t_image_avoir_lieu ON t_image.id_image = t_image_avoir_lieu.fk_image 
                 INNER JOIN t_lieu ON t_image_avoir_lieu.fk_lieuimage = t_lieu.id_lieu
                 WHERE t_lieu.id_lieu = ?";
+
+        echo "<pre>Requête SQL : $sql</pre>";
+
         
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("i", $lieu);
@@ -44,7 +69,7 @@ class ImageModel {
 
     public function getByYear($annee) {
         $images = array();
-        $sql = "SELECT t_image.id_image, t_image.filename, t_image.date, t_lieu.NomLieu 
+        $sql = "SELECT t_image.id_image, t_image.filename, t_image.date, t_lieu.NomLieu, t_lieu.id_lieu 
                 FROM t_image 
                 INNER JOIN t_image_avoir_lieu ON t_image.id_image = t_image_avoir_lieu.fk_image 
                 INNER JOIN t_lieu ON t_image_avoir_lieu.fk_lieuimage = t_lieu.id_lieu
@@ -52,6 +77,7 @@ class ImageModel {
         
         // Afficher la requête SQL de manière lisible dans le contexte HTML
         echo "<pre>Requête SQL : $sql</pre>";
+        echo "<pre>Annee Filter: $annee</pre>";
     
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("s", $annee);
@@ -62,13 +88,13 @@ class ImageModel {
             $images[] = $row;
         }
     
+        var_dump($images); // Afficher le contenu de $images pour le débogage
+    
         return $images;
     }
     
     
     
-    
-
     public function getAllImages() {
         $images = array();
 
@@ -92,7 +118,7 @@ class ImageModel {
     public function getDistinctLieux() {
         $lieux = array();
 
-        $sql = "SELECT DISTINCT NomLieu, id_lieu FROM t_lieu";
+        $sql = "SELECT DISTINCT NomLieu, id_lieu FROM t_lieu ORDER BY Nomlieu";
         $result = $this->conn->query($sql);
 
         if ($result->num_rows > 0) {

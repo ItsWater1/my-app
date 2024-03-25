@@ -35,7 +35,7 @@ if (session_id() === '') {
                         <a class="nav-link" href="/my-app/album/upload_form.php">Ajouter une photo</a>
                     </li>
 
-                    <?php if(isset($_SESSION['username']) && $_SESSION['admin']): ?>
+                    <?php if(isset($_SESSION['username']) && isset($_SESSION['admin']) && $_SESSION['admin']): ?>
                         <!-- Ce lien ne s'affichera que si l'utilisateur est connecté en tant qu'admin -->
                         <li><a class="nav-link" href="/my-app/admin.php">Vue admin</a></li>
                     <?php endif; ?>

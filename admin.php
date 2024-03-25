@@ -3,7 +3,7 @@ include('ressources/nav_adm.php');
 include('ressources/footer.php');
 
 session_start();
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['username']) || !$_SESSION['admin']) {
     header("Location: /my-app/login.php");
     exit();
 }

@@ -23,15 +23,15 @@ if(isset($_POST['captcha'])){
                 // Vérification du mot de passe en utilisant le hash
                 if (hash('sha256', 'i;151-120#' . $enteredPassword) === $storedPassword) {
                     $_SESSION['username'] = $username;
+                    $_SESSION['admin'] = ($row['Level'] == 1); // Stocker le statut d'administrateur dans la session
 
-                    // Vérifier le niveau d'administration
-                    if ($row['Level'] == 1) {
+                    // Redirection en fonction du niveau d'administration
+                    if ($_SESSION['admin']) {
                         header("Location: /my-app/admin.php");
-                        exit(); 
                     } else {
                         header("Location: /my-app/index.php");
-                        exit(); 
                     }
+                    exit(); 
                 } else {
                     $error_message = "Identifiant ou mot de passe incorrect.";
                 }

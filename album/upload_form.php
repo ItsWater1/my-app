@@ -1,8 +1,8 @@
 <?php
+session_start();
+
 include('../ressources/nav.php');
 include('../ressources/footer.php');
-
-session_start();
 
 if (!isset($_SESSION['username'])) {
     header("Location: /my-app/login.php");

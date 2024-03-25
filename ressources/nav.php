@@ -1,3 +1,10 @@
+<?php
+if (session_id() === '') {
+    session_start();
+}
+?>
+
+ 
  <head>
  <link rel="shortcut icon" type="image/x-icon" href="/my-app/images/logo.png" />
 </head>
@@ -27,6 +34,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/my-app/album/upload_form.php">Ajouter une photo</a>
                     </li>
+
+                    <?php if(isset($_SESSION['username']) && $_SESSION['admin']): ?>
+                        <!-- Ce lien ne s'affichera que si l'utilisateur est connecté en tant qu'admin -->
+                        <li><a class="nav-link" href="/my-app/admin.php">Vue admin</a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>

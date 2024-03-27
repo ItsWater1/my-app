@@ -20,9 +20,9 @@ USE module151_jeunesse;
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Sam 11 Juin 2022 à 11:42
+-- Généré le :  Mer 27 Mars 2024 à 10:59
 -- Version du serveur :  5.7.11
--- Version de PHP :  5.6.18
+-- Version de PHP :  7.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -49,6 +49,13 @@ CREATE TABLE `t_image` (
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `t_image`
+--
+
+INSERT INTO `t_image` (`id_image`, `filename`, `date`) VALUES
+(8, '6603f30062cb2_Shunsui.jpg', '2024-03-02');
+
 -- --------------------------------------------------------
 
 --
@@ -60,6 +67,13 @@ CREATE TABLE `t_image_avoir_lieu` (
   `fk_image` int(11) NOT NULL,
   `fk_lieuimage` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `t_image_avoir_lieu`
+--
+
+INSERT INTO `t_image_avoir_lieu` (`id_image_avoir_lieu`, `fk_image`, `fk_lieuimage`) VALUES
+(8, 8, 1);
 
 -- --------------------------------------------------------
 
@@ -264,12 +278,12 @@ ALTER TABLE `t_utilisateur`
 -- AUTO_INCREMENT pour la table `t_image`
 --
 ALTER TABLE `t_image`
-  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT pour la table `t_image_avoir_lieu`
 --
 ALTER TABLE `t_image_avoir_lieu`
-  MODIFY `id_image_avoir_lieu` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_image_avoir_lieu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT pour la table `t_lieu`
 --

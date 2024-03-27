@@ -24,22 +24,14 @@ $listeDates = $imageModel->getDistinctYears();
 $listeLieux = $imageModel->getDistinctLieux();
 
 // Initialisation des variables
-$lieuFilter = null;
-$anneeFilter = null;
-
-// Vérifie que les variables sont instanciées
-if(isset($_GET['lieu'])) {
-    $lieuFilter = $_GET['lieu'];
-}
-if(isset($_GET['annee'])) {
-    $anneeFilter = $_GET['annee'];
-}
+$lieuFilter = isset($_GET['lieu']) ? $_GET['lieu'] : null;
+$anneeFilter = isset($_GET['annee']) ? $_GET['annee'] : null;
 
 // Initialisation du tableau (vide)
 $images = array();
 
 // Filtre par localisation
-if ($lieuFilter !== null) {
+if (!empty($lieuFilter)) {
     $images = $imageModel->getByLocation($lieuFilter);
 } else {
     // Si aucun filtre par lieu n'est spécifié, récupérer toutes les images
@@ -47,21 +39,11 @@ if ($lieuFilter !== null) {
 }
 
 // Filtre par année (check du filtre par lieu)
-if ($anneeFilter !== null && !empty($images)) {
+if (!empty($anneeFilter) && !empty($images)) {
     $images = array_filter($images, function($image) use ($anneeFilter) {
         // Vérifier si l'année de l'image correspond à l'année filtrée
         return substr($image['date'], 0, 4) == $anneeFilter;
     });
-}
-
-
-// 
-if (empty($images)) {
-    if ($lieuFilter !== null) {
-        $images = $imageModel->getByLocation($lieuFilter);
-    } else {
-        $images = $imageModel->getAllImages();
-    }
 }
 ?>
 
@@ -107,6 +89,15 @@ if (empty($images)) {
     </div>
     <button type="submit" class="btn btn-primary mt-3">Filtrer</button>
 </form>
+
+<div>
+    <?php 
+        // Si aucun résultat trouvé avec les filtres, afficher un message approprié
+        if (empty($images)) {
+            echo "<h3>Aucune image trouvée.</h3>";
+        }
+    ?>
+</div>
 
     <div class="row justify-content-center">
         <?php foreach ($images as $image): ?>

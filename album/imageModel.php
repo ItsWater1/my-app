@@ -51,9 +51,6 @@ class ImageModel {
                 INNER JOIN t_image_avoir_lieu ON t_image.id_image = t_image_avoir_lieu.fk_image 
                 INNER JOIN t_lieu ON t_image_avoir_lieu.fk_lieuimage = t_lieu.id_lieu
                 WHERE t_lieu.id_lieu = ?";
-
-        echo "<pre>Requête SQL : $sql</pre>";
-
         
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("i", $lieu);
@@ -74,10 +71,6 @@ class ImageModel {
                 INNER JOIN t_image_avoir_lieu ON t_image.id_image = t_image_avoir_lieu.fk_image 
                 INNER JOIN t_lieu ON t_image_avoir_lieu.fk_lieuimage = t_lieu.id_lieu
                 WHERE YEAR(t_image.date) = ?";
-        
-        // Afficher la requête SQL de manière lisible dans le contexte HTML
-        echo "<pre>Requête SQL : $sql</pre>";
-        echo "<pre>Annee Filter: $annee</pre>";
     
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("s", $annee);
@@ -87,8 +80,6 @@ class ImageModel {
         while ($row = $result->fetch_assoc()) {
             $images[] = $row;
         }
-    
-        var_dump($images); // Afficher le contenu de $images pour le débogage
     
         return $images;
     }

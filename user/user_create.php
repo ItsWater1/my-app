@@ -15,7 +15,7 @@ if (!isset($_SESSION['username'])) {
     <link rel="shortcut icon" type="image/x-icon" href="/my-app/images/logo.png" />
     <title>Création d'utilisateur</title>
     <link rel="stylesheet" type="text/css" href="/my-app/ressources/styles.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="/my-app/bootstrap/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">

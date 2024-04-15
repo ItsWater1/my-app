@@ -24,7 +24,7 @@ $images = $imageModel->getAllImages();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administration des images</title>
     <link rel="stylesheet" href="/my-app/ressources/album.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/my-app/bootstrap/bootstrap.min.css" rel="stylesheet">
     <style>
         .image-container {
             position: relative;

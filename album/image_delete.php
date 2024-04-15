@@ -16,7 +16,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
     if ($success) {
         // Suppression réussie dans la base de données, maintenant supprimer le fichier
         $filename = $imageModel->getImageFilename($image_id);
-        $file_path = "/my-app/album/uploads/{$filename}"; // Assurez-vous que le chemin est correct
+        $file_path = "/my-app/album/uploads/{$filename}";
+
+        echo($file_path);
 
         // Vérifier si le fichier existe avant de tenter de le supprimer
         if (file_exists($file_path)) {

@@ -39,11 +39,9 @@ class ImageModel {
         $stmt->execute();
         $stmt->bind_result($filename);
         $stmt->fetch();
-        $stmt->close();
-
-        return $filename;
+        $stmt->close(); 
     }
-
+    
     public function getByLocation($lieu) {
         $images = array();
         $sql = "SELECT t_image.id_image, t_image.filename, t_image.date, t_lieu.NomLieu 

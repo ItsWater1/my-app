@@ -18,15 +18,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
         $filename = $imageModel->getImageFilename($image_id);
         $file_path = "/my-app/album/uploads/{$filename}";
 
-        echo($file_path);
-
         // Vérifier si le fichier existe avant de tenter de le supprimer
         if (file_exists($file_path)) {
             unlink($file_path); // Supprime le fichier image du dossier
         }
     }
 
-    header("Location: /my-app/album/image_admin.php");
+    echo($file_path);
+    //header("Location: /my-app/album/image_admin.php");
     exit();
 }
 ?>

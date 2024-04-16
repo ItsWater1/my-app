@@ -37,10 +37,14 @@ class ImageModel {
         $stmt = $this->conn->prepare("SELECT filename FROM t_image WHERE id_image = ?");
         $stmt->bind_param("i", $image_id);
         $stmt->execute();
-        $stmt->bind_result($filename);
-        $stmt->fetch();
-        $stmt->close(); 
+        $stmt->bind_result($filename); // Assigne le résultat de la requête à $filename
+        $stmt->fetch(); // Récupère le résultat
+    
+        $stmt->close();
+    
+        return $filename; // Retourne le nom de fichier récupéré
     }
+    
     
     public function getByLocation($lieu) {
         $images = array();

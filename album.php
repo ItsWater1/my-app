@@ -75,20 +75,21 @@ if (!empty($anneeFilter) && !empty($images)) {
                 <?php endforeach; ?>
             </select>
         </div>
+
         <div class="col-md-6">
-    <label for="selectAnnee" class="form-label">Filtrer par année :</label>
-    <select name="annee" id="selectAnnee" class="form-control">
-        <option value="">Toutes les années</option>
-        <?php foreach ($listeDates as $year): ?>
-            <option value="<?= $year ?>" <?= ($anneeFilter == $year) ? 'selected' : '' ?>>
-                <?= $year ?>
-            </option>
-        <?php endforeach; ?>
-    </select>
-</div>
+            <label for="selectAnnee" class="form-label">Filtrer par année :</label>
+            <select name="annee" id="selectAnnee" class="form-control">
+                <option value="">Toutes les années</option>
+                    <?php foreach ($listeDates as $year): ?>
+                        <option value="<?= $year ?>" <?= ($anneeFilter == $year) ? 'selected' : '' ?>>
+                            <?= $year ?>
+                        </option>
+                    <?php endforeach; ?>
+            </select>
+        </div>
     </div>
-    <button type="submit" class="btn btn-primary mt-3">Filtrer</button>
-</form>
+        <button type="submit" class="btn btn-primary mt-3">Filtrer</button>
+    </form>
 
 <div>
     <?php 

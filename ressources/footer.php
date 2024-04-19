@@ -1,4 +1,10 @@
 <style>
+/* 
+
+C'est le footer qu'on retrouve sur le site.
+
+*/
+    
     footer {
         position: fixed;
         bottom: 0;

@@ -1,4 +1,6 @@
 <?php
+// Code de création du captcha. 
+
 session_start();
 
 // Générer un nombre entre 1000 et 9999

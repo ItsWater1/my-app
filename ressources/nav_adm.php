@@ -1,4 +1,7 @@
 <head>
+
+<!-- C'est la barre de navigation de la page admin -->
+
  <link rel="shortcut icon" type="image/x-icon" href="/my-app/images/logo.png" />
 </head>
  

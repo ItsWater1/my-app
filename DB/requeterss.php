@@ -1,4 +1,6 @@
 <?php
+// Requête pour le flux RSS.
+
 include ('DB_connexion.php');
 
 $manif = $conn->query('SELECT * FROM t_manif WHERE date > NOW() ORDER BY date ASC LIMIT 0,25');

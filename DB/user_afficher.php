@@ -1,4 +1,6 @@
 <?php
+// Fichier qui récupère l'utlisateur et son niveau de droits. Utilisé pour la création et modification d'utilisateur (page admin).
+
 include('DB_connexion.php');
 
 // Requête SQL

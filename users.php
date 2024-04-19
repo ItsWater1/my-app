@@ -1,4 +1,6 @@
 <?php
+// Cette page sert aux administrateurs à gérer les utilisateurs. 
+
 include('ressources/nav_adm.php');
 include('ressources/footer.php');
 

@@ -1,4 +1,6 @@
 <?php
+// C'est la page de connexion du site, il faut entrer un nom d'utilisateur, un mot de passe et valider le captcha. 
+
 session_start();
 
 if(isset($_POST['captcha'])){

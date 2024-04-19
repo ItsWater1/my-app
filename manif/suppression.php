@@ -1,4 +1,6 @@
 <?php
+// Fichier du processus de suppression des manifestations. Contient les requêtes SQL.
+
 include('../DB/DB_connexion.php');
 
 session_start();

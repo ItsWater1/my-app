@@ -1,4 +1,6 @@
 <?php
+// Ce code sert à vérifier que la connexion est correcte. Il redirige aussi sur la bonne page en fonction de notre niveau de droits.
+
 session_start();
 require_once('DB/DB_connexion.php');
 

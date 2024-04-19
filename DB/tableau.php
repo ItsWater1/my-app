@@ -1,4 +1,6 @@
 <?php
+// Requête afin de créer le tableau qui contient toutes les manifestations. 
+
 include ('DB_connexion.php');
 
 // Exécute la requête SQL

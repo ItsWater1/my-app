@@ -1,4 +1,6 @@
 <?php
+// C'est la page qui affiche les images sur le site, on peut aussi trier les images par date ou lieu. 
+
 session_start();
 
 include('ressources/nav.php');

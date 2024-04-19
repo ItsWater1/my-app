@@ -1,4 +1,6 @@
 <?php
+// Formulaire de modification des manifestations (page admin).
+
 include('../DB/liste_ajout.php');
 session_start();
 

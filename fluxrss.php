@@ -1,4 +1,6 @@
 <?php
+// C'est la page qui permet de générer le flux RSS. 
+
 //header("Content-type: text/xml");
 // Fuseau horaire
 date_default_timezone_set('Europe/Zurich');

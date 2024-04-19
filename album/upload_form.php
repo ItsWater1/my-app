@@ -1,4 +1,6 @@
 <?php
+// Formulaire qui permet d'ajouter des images sur le site.
+
 session_start();
 
 include('../ressources/nav.php');

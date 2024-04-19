@@ -1,4 +1,6 @@
 <?php
+// C'est le calendrier dynamique de l'interface utilisateur.
+
 session_start();
 
 include ('ressources/nav.php');

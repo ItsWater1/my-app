@@ -1,4 +1,6 @@
 <?php
+// C'est la page d'accueil admin, elle contient le tableau des manifestations avec les boutons pour les gérer (suppression, modification, ajout).
+
 include('ressources/nav_adm.php');
 include('ressources/footer.php');
 

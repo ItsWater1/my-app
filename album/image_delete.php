@@ -1,4 +1,6 @@
 <?php
+// Processus de suppression des images
+
 session_start();
 if (!isset($_SESSION['username'])) {
     header("Location: /my-app/login.php");
@@ -13,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
     $imageModel = new ImageModel($conn);
     $filename = $imageModel->getImageFilename($image_id);
 
-    // Supprimer le fichier en premier sinon $file_patch est faux
+    // Supprimer le fichier en premier sinon $file_path est faux
     $file_path = "uploads/{$filename}";
     if (file_exists($file_path)) {
         $success = unlink($file_path); 

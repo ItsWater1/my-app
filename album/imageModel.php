@@ -1,4 +1,5 @@
 <?php
+// Ensemble des fonctions qui permettent la suppression, l'ajout ou le tri des images.
 
 class ImageModel {
     private $conn;

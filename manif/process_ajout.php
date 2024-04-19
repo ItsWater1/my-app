@@ -1,4 +1,6 @@
 <?php
+// Fichier du processus d'ajout d'une manifestation, contient les requêtes SQL. 
+
 include('../DB/DB_connexion.php');
 session_start();
 

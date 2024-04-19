@@ -1,4 +1,6 @@
 <?php
+// Page d'affichage pour les admins -> permet la suppression des images.
+
 include('../DB/DB_connexion.php');
 include('../ressources/nav_adm.php');
 include('../ressources/footer.php');

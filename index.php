@@ -1,4 +1,6 @@
 <?php
+// C'est la page d'accueil du site quand on se connecte en utilisateur. 
+
 session_start();
 include('ressources/nav.php');
 include('ressources/footer.php');

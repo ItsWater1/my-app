@@ -1,4 +1,6 @@
 <?php
+// Fichier du processus de modification des manifestations. Il contient les requêtes SQL.
+
 include('../DB/DB_connexion.php');
 session_start();
 

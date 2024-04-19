@@ -1,4 +1,7 @@
 <?php 
+// Fichier qui fait la requête pour les lieux et les types de manifestations. 
+// Est utilisé sur la page admin pour l'ajout ou la modification de manifs. 
+
 // Inclure le fichier de connexion à la base de données
 include('/DB_connexion.php');
 

@@ -1,4 +1,6 @@
 <?php
+// Processus d'ajout des images. L'image est ajoutée dans la bse de données et dans le dossier uploads. 
+
 include('../DB/DB_connexion.php');
 include('imageModel.php');
 

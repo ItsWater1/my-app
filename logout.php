@@ -1,4 +1,6 @@
 <?php
+// Ce code sert à détruire la session php quand on se déconnecte. 
+
 session_start();
 
 // Détruire toutes les données de session

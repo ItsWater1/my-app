@@ -4,7 +4,8 @@ include('/DB_connexion.php');
 
 // Requête pour récupérer les lieux
 $sqlLieu = "SELECT * FROM t_lieu 
-WHERE id_lieu in(1,2)";
+WHERE id_lieu in(1,2)
+ORDER BY NomLieu";
 $resultLieu = $conn->query($sqlLieu);
 
 // Requête pour récupérer les types de manifestation

@@ -13,7 +13,7 @@ include('../DB/DB_connexion.php'); // Inclure le fichier de connexion à la base
 include('imageModel.php'); 
 // Récupérer la liste des lieux depuis la base de données
 $listeLieux = array();
-$sql = "SELECT * FROM t_lieu"; // Sélectionner tous les lieux
+$sql = "SELECT * FROM t_lieu ORDER BY NomLieu"; // Sélectionner tous les lieux
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {

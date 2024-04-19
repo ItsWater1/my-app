@@ -33,6 +33,5 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
         // Gérer les cas d'échec de suppression dans la base de données
         echo('Erreur lors de la suppression dans la base de données');
     }
-    echo($file_path);
 }
 ?>

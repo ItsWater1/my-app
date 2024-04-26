@@ -1,5 +1,5 @@
 <?php
-// Processus d'ajout des images. L'image est ajoutée dans la bse de données et dans le dossier uploads. 
+// Processus d'ajout des images. L'image est ajoutée dans la base de données et dans le dossier uploads. 
 
 include('../DB/DB_connexion.php');
 include('imageModel.php');
@@ -18,6 +18,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $filename = $_FILES["image"]["name"];
     $date = $_POST["date"];
     $lieu = $_POST["lieu"];
+    // Récupérer l'ID de l'utilisateur à partir de la session
+    $user_id = $_SESSION['user_id'];
+
+    // Récupérer le nom d'utilisateur à partir de l'ID de l'utilisateur
+    $stmt = $conn->prepare("SELECT user FROM t_utilisateur WHERE id_utilisateur = ?");
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $stmt->bind_result($username);
+    $stmt->fetch();
+    $stmt->close();
     
     // Générer un identifiant unique pour le nom de fichier
     $random_chars = uniqid();
@@ -30,12 +40,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Téléverser l'image
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
         // Insérer les informations de l'image dans la base de données
-        $imageModel->insertImage($filename_with_random, $date, $lieu); // Utiliser le nom de fichier avec les caractères aléatoires
-        echo "L'image a été téléversée avec succès.";
+        $imageModel->insertImage($filename_with_random, $date, $lieu, $user_id); // Utiliser le nom de fichier avec les caractères aléatoires
+        echo "L'image a été téléversée avec succès." ;
+        echo      $user_id;
     } else {
         echo "Une erreur s'est produite lors du téléversement de l'image.";
     }
-}
+
+    // Redirection vers le formulaire d'ajout d'image
     header("Location: /my-app/album/upload_Form.php");
     exit();
+}
 ?>

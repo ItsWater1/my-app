@@ -112,6 +112,9 @@ if (!empty($anneeFilter) && !empty($images)) {
                             <?= $image['NomLieu']?>
                             , le <?= date('d.m.Y', strtotime($image['date'])) ?>
                         </p>
+                        <p>                        
+                            Ajouté par <?= $image['user'] ?>
+                        </p>
                     </div>
                 </div>
             </div>

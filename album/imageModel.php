@@ -8,20 +8,32 @@ class ImageModel {
         $this->conn = $conn;
     }
 
-    public function insertImage($filename, $date, $lieu) {
-        // Insérer les informations de l'image dans la table t_image
-        $stmt = $this->conn->prepare("INSERT INTO t_image (filename, date) VALUES (?, ?)");
-        $stmt->bind_param("ss", $filename, $date);
-        $stmt->execute();
-        $image_id = $stmt->insert_id; // Récupérer l'ID de l'image insérée
-        $stmt->close();
+    
 
-        // Insérer le lien entre l'image et le lieu dans la table t_image_avoir_lieu
-        $stmt = $this->conn->prepare("INSERT INTO t_image_avoir_lieu (fk_image, fk_lieuimage) VALUES (?, ?)");
-        $stmt->bind_param("ii", $image_id, $lieu);
-        $stmt->execute();
-        $stmt->close();
-    }
+   public function insertImage($filename, $date, $lieu, $user_id) {
+    // Insérer les informations de l'image dans la table t_image
+    $user_id = $_SESSION['user_id'];
+
+    $stmt = $this->conn->prepare("INSERT INTO t_image (filename, date) VALUES (?, ?)");
+    $stmt->bind_param("ss", $filename, $date);
+    $stmt->execute();
+    $image_id = $stmt->insert_id; // Récupérer l'ID de l'image insérée
+    $stmt->close();
+
+    // Insérer le lien entre l'image et le lieu dans la table t_image_avoir_lieu
+    $stmt = $this->conn->prepare("INSERT INTO t_image_avoir_lieu (fk_image, fk_lieuimage) VALUES (?, ?)");
+    $stmt->bind_param("ii", $image_id, $lieu);
+    $stmt->execute();
+    $stmt->close();
+
+    // Insérer le lien entre l'image et l'utilisateur dans la table t_image_avoir_user
+    $stmt = $this->conn->prepare("INSERT INTO t_image_avoir_user (fk_imageUser, fk_userImage) VALUES (?, ?)");
+    $stmt->bind_param("ii", $image_id, $user_id);
+    $stmt->execute();
+    $stmt->close();
+}
+
+    
 
     // Supprimer une image
     public function deleteImage($image_id) {
@@ -91,23 +103,26 @@ class ImageModel {
     
     public function getAllImages() {
         $images = array();
-
-        $sql = "SELECT t_image.id_image, t_image.filename, t_image.date, t_lieu.NomLieu 
+    
+        $sql = "SELECT t_image.id_image, t_image.filename, t_image.date, t_lieu.NomLieu, t_utilisateur.user
                 FROM t_image 
                 INNER JOIN t_image_avoir_lieu ON t_image.id_image = t_image_avoir_lieu.fk_image 
                 INNER JOIN t_lieu ON t_image_avoir_lieu.fk_lieuimage = t_lieu.id_lieu
+                INNER JOIN t_image_avoir_user ON t_image.id_image = t_image_avoir_user.fk_imageUser
+                INNER JOIN t_utilisateur ON t_image_avoir_user.fk_userImage = t_utilisateur.id_utilisateur
                 ORDER BY t_image.date";
-
+    
         $result = $this->conn->query($sql);
-
+    
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $images[] = $row;
             }
         }
-
+    
         return $images;
     }
+    
 
     public function getDistinctLieux() {
         $lieux = array();
@@ -138,6 +153,9 @@ class ImageModel {
 
         return $years;
     }
+
+    
+    
 }
 
 ?>

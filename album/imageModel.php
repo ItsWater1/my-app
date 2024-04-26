@@ -154,31 +154,17 @@ class ImageModel {
         return $years;
     }
 
-    // Nouveau (peut tout casser)
+    //
+    public function getAllImagesByUser($user_id) {
+        $stmt = $this->conn->prepare("SELECT i.* FROM t_image i INNER JOIN t_image_avoir_user iu ON i.id_image = iu.fk_imageUser WHERE iu.fk_userImage = ?");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $images = $result->fetch_all(MYSQLI_ASSOC);
+        $stmt->close();
+            return $images;
+    }
 
-    // Dans votre modèle ImageModel
-
-public function getByLocationAndUser($lieu_id, $user_id) {
-    $stmt = $this->conn->prepare("SELECT i.* FROM t_image i INNER JOIN t_image_avoir_lieu il ON i.id_image = il.fk_image INNER JOIN t_lieu l ON il.fk_lieuimage = l.id_lieu INNER JOIN t_image_avoir_user iu ON i.id_image = iu.fk_imageUser WHERE l.id_lieu = ? AND iu.fk_userImage = ?");
-    $stmt->bind_param("ii", $lieu_id, $user_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $images = $result->fetch_all(MYSQLI_ASSOC);
-    $stmt->close();
-    return $images;
-}
-
-public function getAllImagesByUser($user_id) {
-    $stmt = $this->conn->prepare("SELECT i.* FROM t_image i INNER JOIN t_image_avoir_user iu ON i.id_image = iu.fk_imageUser WHERE iu.fk_userImage = ?");
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $images = $result->fetch_all(MYSQLI_ASSOC);
-    $stmt->close();
-    return $images;
-}
-
-    
 }
 
 ?>

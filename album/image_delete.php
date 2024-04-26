@@ -30,10 +30,17 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
     $success = $imageModel->deleteImage($image_id);
 
     if ($success) {
-        header("Location: /my-app/album/image_admin.php");
-    } else {
+        if(isset($_SESSION['username']) && isset($_SESSION['admin']) && $_SESSION['admin']){
+            header("Location: /my-app/album/image_admin.php");
+        }
+        else{ 
+            header("Location: /my-app/album/image_user.php");
+        }
+    } 
+    else {
         // Gérer les cas d'échec de suppression dans la base de données
         echo('Erreur lors de la suppression dans la base de données');
     }
+
 }
 ?>

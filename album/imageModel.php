@@ -58,35 +58,38 @@ class ImageModel {
         return $filename; // Retourne le nom de fichier récupéré
     }
     
-    
     public function getByLocation($lieu) {
         $images = array();
-        $sql = "SELECT t_image.id_image, t_image.filename, t_image.date, t_lieu.NomLieu 
+        $sql = "SELECT t_image.id_image, t_image.filename, t_image.date, t_lieu.NomLieu, t_utilisateur.user
                 FROM t_image 
                 INNER JOIN t_image_avoir_lieu ON t_image.id_image = t_image_avoir_lieu.fk_image 
                 INNER JOIN t_lieu ON t_image_avoir_lieu.fk_lieuimage = t_lieu.id_lieu
+                INNER JOIN t_image_avoir_user ON t_image.id_image = t_image_avoir_user.fk_imageUser
+                INNER JOIN t_utilisateur ON t_image_avoir_user.fk_userImage = t_utilisateur.id_utilisateur
                 WHERE t_lieu.id_lieu = ?";
         
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("i", $lieu);
         $stmt->execute();
         $result = $stmt->get_result();
-
+    
         while ($row = $result->fetch_assoc()) {
             $images[] = $row;
         }
-
+    
         return $images;
     }
 
     public function getByYear($annee) {
         $images = array();
-        $sql = "SELECT t_image.id_image, t_image.filename, t_image.date, t_lieu.NomLieu, t_lieu.id_lieu 
+        $sql = "SELECT t_image.id_image, t_image.filename, t_image.date, t_lieu.NomLieu, t_utilisateur.user
                 FROM t_image 
                 INNER JOIN t_image_avoir_lieu ON t_image.id_image = t_image_avoir_lieu.fk_image 
                 INNER JOIN t_lieu ON t_image_avoir_lieu.fk_lieuimage = t_lieu.id_lieu
+                INNER JOIN t_image_avoir_user ON t_image.id_image = t_image_avoir_user.fk_imageUser
+                INNER JOIN t_utilisateur ON t_image_avoir_user.fk_userImage = t_utilisateur.id_utilisateur
                 WHERE YEAR(t_image.date) = ?";
-    
+        
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("s", $annee);
         $stmt->execute();

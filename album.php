@@ -113,7 +113,7 @@ if (!empty($anneeFilter) && !empty($images)) {
                             , le <?= date('d.m.Y', strtotime($image['date'])) ?>
                         </p>
                         <p>                        
-                            Ajouté par <?= $image['user'] ?>
+                        Ajouté par <?= isset($image['user']) ? $image['user'] : 'Utilisateur inconnu' ?>
                         </p>
                     </div>
                 </div>

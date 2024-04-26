@@ -28,7 +28,7 @@ $images = $imageModel->getAllImagesByUser($userID);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administration des images</title>
+    <title>Mes images</title>
     <link rel="stylesheet" href="/my-app/ressources/album.css">
     <link href="/my-app/bootstrap/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -59,7 +59,7 @@ $images = $imageModel->getAllImagesByUser($userID);
 </head>
 <body>
 <div class="container mt-5">
-    <h2 class="text-center mb-4">Administration des images</h2>
+    <h2 class="text-center mb-4">Mes images</h2>
     <div class="row justify-content-center">
         <?php foreach ($images as $image): ?>
             <div class="col-md-3">

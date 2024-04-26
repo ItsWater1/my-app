@@ -1,5 +1,5 @@
 <?php
-// Formulaire qui permet d'ajouter des images sur le site.
+// Formulaire qui permet d'ajouter des images sur le site. --> ATTENTION MVC
 
 session_start();
 

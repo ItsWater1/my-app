@@ -8,11 +8,8 @@ class ImageModel {
         $this->conn = $conn;
     }
 
-    
-
-   public function insertImage($filename, $date, $lieu, $user_id) {
+    public function insertImage($filename, $date, $lieu, $user_id) {
     // Insérer les informations de l'image dans la table t_image
-    //$user_id = $_SESSION['user_id'];
 
     $stmt = $this->conn->prepare("INSERT INTO t_image (filename, date) VALUES (?, ?)");
     $stmt->bind_param("ss", $filename, $date);
@@ -31,9 +28,7 @@ class ImageModel {
     $stmt->bind_param("ii", $image_id, $user_id);
     $stmt->execute();
     $stmt->close();
-}
-
-    
+    }
 
     // Supprimer une image
     public function deleteImage($image_id) {
@@ -102,8 +97,6 @@ class ImageModel {
         return $images;
     }
     
-    
-    
     public function getAllImages() {
         $images = array();
     
@@ -157,7 +150,7 @@ class ImageModel {
         return $years;
     }
 
-    //
+    // Obtenir les images en fonction de l'utilisateur
     public function getAllImagesByUser($user_id) {
         $stmt = $this->conn->prepare("SELECT i.* FROM t_image i INNER JOIN t_image_avoir_user iu ON i.id_image = iu.fk_imageUser WHERE iu.fk_userImage = ?");
         $stmt->bind_param("i", $user_id);

@@ -26,7 +26,8 @@ if(isset($_POST['captcha'])){
                 if (hash('sha256', 'i;151-120#' . $enteredPassword) === $storedPassword) {
                     $_SESSION['username'] = $username;
                     $_SESSION['admin'] = ($row['Level'] == 1); // Stocker le statut d'administrateur dans la session
-
+                    $_SESSION['user_id'] = $row['id_utilisateur'];
+                    
                     // Redirection en fonction du niveau d'administration
                     if ($_SESSION['admin']) {
                         header("Location: /my-app/admin.php");

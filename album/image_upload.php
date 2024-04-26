@@ -42,11 +42,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Insérer les informations de l'image dans la base de données
         $imageModel->insertImage($filename_with_random, $date, $lieu, $user_id); // Utiliser le nom de fichier avec les caractères aléatoires
         echo "L'image a été téléversée avec succès." ;
-        echo      $user_id;
     } else {
         echo "Une erreur s'est produite lors du téléversement de l'image.";
     }
-
+    
     // Redirection vers le formulaire d'ajout d'image
     header("Location: /my-app/album/upload_Form.php");
     exit();

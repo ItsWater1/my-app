@@ -1,5 +1,4 @@
 <?php
-// Démarre la session
 session_start();
 
 // Vérifie si des données sont stockées en session

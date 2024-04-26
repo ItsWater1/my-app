@@ -12,7 +12,7 @@ class ImageModel {
 
    public function insertImage($filename, $date, $lieu, $user_id) {
     // Insérer les informations de l'image dans la table t_image
-    $user_id = $_SESSION['user_id'];
+    //$user_id = $_SESSION['user_id'];
 
     $stmt = $this->conn->prepare("INSERT INTO t_image (filename, date) VALUES (?, ?)");
     $stmt->bind_param("ss", $filename, $date);

@@ -1,10 +1,10 @@
 <?php
-// Requête qui récupère le les manifestations et leurs dates afin de les ajouter dans le calendrier (calendar.php). 
-// ATTENTON SECURISER LES REQUETES DANS TOUT LE DOSSIER 
+// Requête qui récupère les manifestations et leurs dates afin de les ajouter dans le calendrier (calendar.php).
+// ATTENTION : SECURISER LES REQUETES DANS TOUT LE DOSSIER
 
-include ('DB_connexion.php');
+include('DB_connexion.php');
 
-// Exécute la requête SQL
+// Préparation de la requête SQL
 $sql = "SELECT
     m.Nom AS NomManifestation,
     m.Date
@@ -12,25 +12,30 @@ FROM
     t_manif m
 WHERE
     m.Nom IS NOT NULL AND m.Nom <> ''
-ORDER BY Date;
-";
+ORDER BY Date";
 
-$result = $conn->query($sql);
+// Préparation de la requête préparée
+$stmt = $conn->prepare($sql);
 
-// Vérifier si la requête s'est bien déroulée
-if (!$result) {
-    die("Erreur dans la requête SQL : " . $conn->error);
-}
+// Exécution de la requête préparée
+$stmt->execute();
 
-// Récupérer les résultats sous forme de tableau
+// Liaison des résultats à des variables
+$stmt->bind_result($nomManifestation, $date);
+
+// Initialisation du tableau d'événements
 $events = array();
-while ($row = $result->fetch_assoc()) {
-    $date = $row['Date'];
-    $events[$date][] = $row['NomManifestation'];
+
+// Boucle pour récupérer les résultats
+while ($stmt->fetch()) {
+    $events[$date][] = $nomManifestation;
 }
 
 // Convertir le tableau en format JSON
 echo json_encode($events);
+
+// Fermer la requête préparée
+$stmt->close();
 
 // Fermer la connexion à la base de données
 $conn->close();

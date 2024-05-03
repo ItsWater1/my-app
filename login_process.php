@@ -1,6 +1,5 @@
 <?php
 // Ce code sert à vérifier que la connexion est correcte. Il redirige aussi sur la bonne page en fonction de notre niveau de droits.
-// PREPARER LA REQUETE
 
 session_start();
 require_once('DB/DB_connexion.php');
@@ -16,8 +15,12 @@ if(isset($_POST['captcha'])){
             $username = $_POST['username'];
             $enteredPassword = $_POST['password'];
 
-            $query = "SELECT * FROM t_utilisateur WHERE user='$username'";
-            $result = $conn->query($query);
+            // Requête préparée pour récupérer les informations de l'utilisateur
+            $query = "SELECT * FROM t_utilisateur WHERE user=?";
+            $stmt = $conn->prepare($query);
+            $stmt->bind_param("s", $username);
+            $stmt->execute();
+            $result = $stmt->get_result();
 
             if ($result->num_rows == 1) {
                 $row = $result->fetch_assoc();

@@ -17,31 +17,36 @@ if (!isset($_SESSION['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="/my-app/images/logo.png" />
     <title>Ajouter une manifestation</title>
-    <link rel="stylesheet" type="text/css" href="/my-app/ressources/styles.css" />
-    <link href="/my-app/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/my-app/bootstrap/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <br />
-        <h2>Ajouter une manifestation</h2>
+        <h2 class="mt-5">Ajouter une manifestation</h2>
         <form action="/my-app/manif/process_ajout.php" method="post" id="addForm">
             <div class="form-group">
                 <label for="Nom">Nom :</label>
-                <input type="text" id="Nom" name="Nom" required>
+                <input type="text" id="Nom" name="Nom" class="form-control" required>
                 <div id="NomFeedback" class="invalid-feedback alert alert-danger d-none"></div>
             </div>
             <div class="form-group">
                 <label for="Date">Date :</label>
-                <input type="date" id="Date" name="Date" required>
+                <input type="date" id="Date" name="Date" class="form-control" required>
             </div>
             <div class="form-group">
                 <label for="Lieu">Lieu :</label>
-                <select id="Lieu" name="Lieu" required>
+                <select id="Lieu" name="Lieu" class="form-control" required>
                     <?php
-                    // Afficher les options pour Lieu
                     if ($resultLieu->num_rows > 0) {
                         while ($row = $resultLieu->fetch_assoc()) {
-                            $selected = ($row["id_lieu"] == $lieu) ? "selected" : ""; // Vérifie si l'option correspond à la valeur actuelle
+                            $selected = ($row["id_lieu"] == $lieu) ? "selected" : "";
                             echo "<option value='" . $row["id_lieu"] . "' $selected>" . $row["NomLieu"] . "</option>";
                         }
                     }
@@ -50,12 +55,11 @@ if (!isset($_SESSION['username'])) {
             </div>
             <div class="form-group">
                 <label for="Type">Type :</label>
-                <select id="Type" name="Type" required>
+                <select id="Type" name="Type" class="form-control" required>
                     <?php
-                    // Afficher les options pour Type
                     if ($resultType->num_rows > 0) {
                         while ($row = $resultType->fetch_assoc()) {
-                            $selected = ($row["id_type"] == $type) ? "selected" : ""; // Vérifie si l'option correspond à la valeur actuelle
+                            $selected = ($row["id_type"] == $type) ? "selected" : "";
                             echo "<option value='" . $row["id_type"] . "' $selected>" . $row["TypeManif"] . "</option>";
                         }
                     }
@@ -66,7 +70,6 @@ if (!isset($_SESSION['username'])) {
         </form>
     </div>
 
-    <!-- Inclure le CDN Bootstrap JS -->  
     <script src="/my-app/JS/jquery-3.7.1.js"></script>
     <script src="/my-app/JS/popper.min.js"></script>
     <script src="/my-app/bootstrap/boostrap.min.js"></script>
@@ -88,4 +91,3 @@ if (!isset($_SESSION['username'])) {
     </script>
 </body>
 </html>
-

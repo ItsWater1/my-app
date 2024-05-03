@@ -1,9 +1,9 @@
 <?php
-// Requête afin de créer le tableau qui contient toutes les manifestations. 
+// Requête afin de créer le tableau qui contient toutes les manifestations.
 
-include ('DB_connexion.php');
+include('DB_connexion.php');
 
-// Exécute la requête SQL
+// Requête préparée pour récupérer les informations sur les manifestations
 $sql = "SELECT
     m.Nom AS NomManifestation,
     m.Date,
@@ -22,19 +22,30 @@ JOIN
     t_type t ON mat.fk_type = t.id_type
 WHERE
     m.Nom IS NOT NULL AND m.Nom <> ''
-ORDER BY Date;
-";
+ORDER BY Date";
 
-$result = $conn->query($sql);
+// Préparation de la requête préparée
+$stmt = $conn->prepare($sql);
 
-// Récupère les résultats sous forme de tableau
+// Exécution de la requête préparée
+$stmt->execute();
+
+// Récupération des résultats
+$result = $stmt->get_result();
+
+// Initialisation du tableau pour stocker les résultats
 $rows = array();
+
+// Boucle pour récupérer les lignes de résultats
 while ($row = $result->fetch_assoc()) {
     $rows[] = $row;
 }
 
 // Convertit le tableau en format JSON
 echo json_encode($rows);
+
+// Ferme la requête préparée
+$stmt->close();
 
 // Ferme la connexion à la base de données
 $conn->close();

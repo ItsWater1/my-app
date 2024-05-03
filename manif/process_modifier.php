@@ -46,6 +46,7 @@ if (!isset($_SESSION['username'])) {
 
     if (!$resultLieu) {
         die("Erreur lors de la mise à jour du lieu : " . $stmtLieu->error);
+        echo $queryLieu;
     }
 
     $stmtLieu->close();
@@ -60,6 +61,7 @@ if (!isset($_SESSION['username'])) {
 
     if (!$resultType) {
         die("Erreur lors de la modification du type : " . $conn->error);
+        echo $queryType;
     }
 
     $stmtType->close();

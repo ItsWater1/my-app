@@ -10,4 +10,3 @@ $closestDateResult = $closestDateQuery->fetch_assoc();
 $closestDate = isset($closestDateResult['date']) ? $closestDateResult['date'] : '';
 
 ?>
-

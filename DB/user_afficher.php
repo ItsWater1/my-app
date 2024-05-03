@@ -1,19 +1,28 @@
 <?php
-// Fichier qui récupère l'utlisateur et son niveau de droits. Utilisé pour la création et modification d'utilisateur (page admin).
+// Fichier qui récupère l'utilisateur et son niveau de droits. Utilisé pour la création et la modification d'utilisateur (page admin).
 
 include('DB_connexion.php');
 
-// Requête SQL
+// Requête SQL préparée
 $sql = "SELECT 
     user,
     level
 FROM t_utilisateur
 ORDER BY level";
 
-$result = $conn->query($sql);
+// Préparation de la requête préparée
+$stmt = $conn->prepare($sql);
 
-// Récupère les résultats sous forme de tableau
+// Exécution de la requête préparée
+$stmt->execute();
+
+// Récupération des résultats
+$result = $stmt->get_result();
+
+// Initialisation du tableau pour stocker les résultats
 $rows = array();
+
+// Boucle pour récupérer les lignes de résultats
 while ($row = $result->fetch_assoc()) {
     $rows[] = $row;
 }
@@ -21,6 +30,9 @@ while ($row = $result->fetch_assoc()) {
 // Convertit le tableau en format JSON
 echo json_encode($rows);
 
-// Ferme la connexion à la base de données
+// Fermeture de la requête préparée
+$stmt->close();
+
+// Fermeture de la connexion à la base de données
 $conn->close();
 ?>

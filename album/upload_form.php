@@ -26,9 +26,17 @@ $listeLieux = $imageModel->getDistinctLieux();
     <title>Formulaire d'album photo</title>
     <!-- Liens Bootstrap -->
     <link href="/my-app/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
@@ -69,21 +77,3 @@ $listeLieux = $imageModel->getDistinctLieux();
     <script src="/my-app/bootstrap/boostrap.min.js"></script>
 </body>
 </html>
-
-<?php
-// Code PHP pour le traitement du formulaire et l'ajout d'image
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Récupérer les données du formulaire
-    $filename = $_FILES['image']['name'];
-    $date = $_POST['date'];
-    $lieu = $_POST['lieu'];
-    $user_id = $_SESSION['user_id']; // Supposons que l'ID de l'utilisateur est stocké dans la session
-
-    // Appeler la fonction d'insertion d'image du modèle
-    $imageModel->insertImage($filename, $date, $lieu, $user_id);
-
-    // Redirection après l'ajout de l'image
-    header("Location: some_page.php");
-    exit();
-}
-?>

@@ -1,6 +1,5 @@
 <?php
 // Fichier du processus de suppression des manifestations. Contient les requêtes SQL.
-// PREPARER LES REQUETES
 
 include('../DB/DB_connexion.php');
 
@@ -9,35 +8,46 @@ session_start();
 // Récupérer le nom de la manifestation à supprimer depuis le paramètre de l'URL
 $nomManifestation = $_GET['nomManifestation'];
 
-   // Supprimer les enregistrements liés dans t_manif_avoir_lieu
-   $queryDeleteAvoirLieu = "DELETE FROM t_manif_avoir_lieu WHERE fk_manif IN (SELECT id_manif FROM t_manif WHERE Nom='$nomManifestation')";
-   $resultDeleteAvoirLieu = $conn->query($queryDeleteAvoirLieu);
+// Requête préparée pour supprimer les enregistrements liés dans t_manif_avoir_lieu
+$queryDeleteAvoirLieu = "DELETE FROM t_manif_avoir_lieu WHERE fk_manif IN (SELECT id_manif FROM t_manif WHERE Nom=?)";
+$stmtDeleteAvoirLieu = $conn->prepare($queryDeleteAvoirLieu);
+$stmtDeleteAvoirLieu->bind_param("s", $nomManifestation);
+$stmtDeleteAvoirLieu->execute();
 
-   if (!$resultDeleteAvoirLieu) {
-       die("Erreur lors de la suppression des enregistrements liés : " . $conn->error);
-   }
+if ($stmtDeleteAvoirLieu->error) {
+    die("Erreur lors de la suppression des enregistrements liés : " . $stmtDeleteAvoirLieu->error);
+}
 
-   // Supprimer les enregistrements liés dans t_manif_avoir_type
-   $queryDeleteAvoirType = "DELETE FROM t_manif_avoir_type WHERE fk_manif IN (SELECT id_manif FROM t_manif WHERE Nom='$nomManifestation')";
-   $resultDeleteAvoirType = $conn->query($queryDeleteAvoirType);
+$stmtDeleteAvoirLieu->close();
 
-   if (!$resultDeleteAvoirType) {
-    die("Erreur lors de la suppression des enregistrements liés : " . $conn->error);
-   }
+// Requête préparée pour supprimer les enregistrements liés dans t_manif_avoir_type
+$queryDeleteAvoirType = "DELETE FROM t_manif_avoir_type WHERE fk_manif IN (SELECT id_manif FROM t_manif WHERE Nom=?)";
+$stmtDeleteAvoirType = $conn->prepare($queryDeleteAvoirType);
+$stmtDeleteAvoirType->bind_param("s", $nomManifestation);
+$stmtDeleteAvoirType->execute();
 
+if ($stmtDeleteAvoirType->error) {
+    die("Erreur lors de la suppression des enregistrements liés : " . $stmtDeleteAvoirType->error);
+}
 
-    // Supprimer la manifestation
-    $query = "DELETE FROM t_manif WHERE Nom='$nomManifestation'";
-    $result = $conn->query($query);
+$stmtDeleteAvoirType->close();
 
-    if (!$result) {
-    die("Erreur lors de la suppression de la manifestation : " . $conn->error);
-    }   
+// Requête préparée pour supprimer la manifestation
+$query = "DELETE FROM t_manif WHERE Nom=?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("s", $nomManifestation);
+$stmt->execute();
 
-    // Fermer la connexion à la base de données
-    $conn->close();
+if ($stmt->error) {
+    die("Erreur lors de la suppression de la manifestation : " . $stmt->error);
+}
 
-    // Rediriger vers la page d'index après la suppression
-    header("Location: /my-app/admin.php");
-    exit();
+$stmt->close();
+
+// Fermer la connexion à la base de données
+$conn->close();
+
+// Rediriger vers la page d'index après la suppression
+header("Location: /my-app/admin.php");
+exit();
 ?>

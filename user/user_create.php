@@ -1,4 +1,5 @@
 <?php
+// Formulaire de création de l'utilisateur
 session_start();
 
 if (!isset($_SESSION['username'])) {
@@ -14,31 +15,36 @@ if (!isset($_SESSION['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="/my-app/images/logo.png" />
     <title>Création d'utilisateur</title>
-    <link rel="stylesheet" type="text/css" href="/my-app/ressources/styles.css" />
     <link href="/my-app/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <br/>
-        <?php echo "<h2>Création d'un nouvel utilisateur</h2>";?>
+        <br />
+        <?php echo "<h2>Création d'un nouvel utilisateur</h2>"; ?>
         <form action="/my-app/user/user_create_process.php" method="post" id="addUser">
             <div class="form-group">
                 <label for="user">Nom d'utilisateur :</label>
-                <input type="text" id="user" name="user" required>
+                <input type="text" id="user" name="user" required class="form-control">
                 <div id="userFeedback" class="invalid-feedback alert alert-danger d-none"></div>
             </div>
             <div class="form-group">
                 <label for="mdp">Mot de passe :</label>
-                <input type="text" id="mdp" name="mdp"required>
+                <input type="text" id="mdp" name="mdp" required class="form-control">
             </div>
             <div class="form-group">
                 <label for="lvl">Niveau de droits :</label>
-                <select id="lvl" name="lvl"required>
+                <select id="lvl" name="lvl" required class="form-control">
                     <option>0</option>
                     <option>1</option>
                 </select>
-
-
             </div>
             <button type="submit" class="btn btn-primary">Créer</button>
         </form>

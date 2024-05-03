@@ -1,4 +1,6 @@
 <?php
+// Processus de création de l'utilisateur
+
 include('../DB/DB_connexion.php');
 session_start();
 

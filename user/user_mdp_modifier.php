@@ -1,4 +1,6 @@
 <?php
+// Formulaire de modification du mot de passe de l'utilisateur
+
 session_start();
 
 if (!isset($_SESSION['username'])) {
@@ -17,6 +19,14 @@ $user = $_GET['user'];
     <link rel="shortcut icon" type="image/x-icon" href="/my-app/images/logo.png" />
     <title>Modifier le mot de passe</title>
     <link href="/my-app/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -25,12 +35,12 @@ $user = $_GET['user'];
         <form action="/my-app/user/user_mdp_process_modifier.php" method="post">
             <div class="form-group">
                 <label for="nouveauMDP">Nouveau mot de passe :</label>
-                <input type="text" id="nouveauMDP" name="nouveauMDP"required>
+                <input type="text" id="nouveauMDP" name="nouveauMDP" required class="form-control">
             </div>
             <input type="hidden" name="user" value="<?php echo $user; ?>">
             <button type="submit" class="btn btn-primary">Modifier</button>
         </form>
-            </div>
+    </div>
 
     <!-- Inclure le CDN Bootstrap JS -->
     <script src="/my-app/JS/jquery-3.7.1.js"></script>

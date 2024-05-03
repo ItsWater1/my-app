@@ -89,8 +89,8 @@ $benefice = $_GET['benefice'];
     </div>
 
     <!-- Inclure le CDN Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="/my-app/JS/jquery-3.7.1.js"></script>
+    <script src="/my-app/JS/popper.min.js"></script>
     <script src="/my-app/bootstrap/boostrap.min.js"></script>
     <script>
         document.getElementById('modifierForm').addEventListener('submit', function(event) {

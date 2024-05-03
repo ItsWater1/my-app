@@ -71,7 +71,7 @@ if ($result->num_rows > 0) {
         </div>
     </div>
     <!-- Scripts Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/my-app/JS/jquery-3.7.1.js"></script>
     <script src="/my-app/bootstrap/boostrap.min.js"></script>
 </body>
 </html>

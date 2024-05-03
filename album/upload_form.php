@@ -1,6 +1,4 @@
 <?php
-// Formulaire qui permet d'ajouter des images sur le site. --> ATTENTION MVC
-
 session_start();
 
 include('../ressources/nav.php');
@@ -12,16 +10,12 @@ if (!isset($_SESSION['username'])) {
 }
 
 include('../DB/DB_connexion.php'); // Inclure le fichier de connexion à la base de données
-include('imageModel.php'); 
-// Récupérer la liste des lieux depuis la base de données
-$listeLieux = array();
-$sql = "SELECT * FROM t_lieu ORDER BY NomLieu"; // Sélectionner tous les lieux
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $listeLieux[] = $row; // Ajouter chaque lieu à la liste
-    }
-}
+include('imageModel.php'); // Inclure le modèle
+
+$imageModel = new ImageModel($conn); // Créer une instance du modèle
+
+// Récupérer la liste des lieux depuis le modèle
+$listeLieux = $imageModel->getDistinctLieux();
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +50,7 @@ if ($result->num_rows > 0) {
                                 <select name="lieu" id="lieu" class="form-control" required>
                                     <option value="">Sélectionnez un lieu</option>
                                     <?php
-                                        // Afficher les lieux récupérés depuis la base de données
+                                        // Afficher les lieux récupérés depuis le modèle
                                         foreach ($listeLieux as $lieu) {
                                             echo "<option value=\"" . $lieu['id_lieu'] . "\">" . $lieu['NomLieu'] . "</option>";
                                         }
@@ -75,4 +69,21 @@ if ($result->num_rows > 0) {
     <script src="/my-app/bootstrap/boostrap.min.js"></script>
 </body>
 </html>
-                        
+
+<?php
+// Code PHP pour le traitement du formulaire et l'ajout d'image
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Récupérer les données du formulaire
+    $filename = $_FILES['image']['name'];
+    $date = $_POST['date'];
+    $lieu = $_POST['lieu'];
+    $user_id = $_SESSION['user_id']; // Supposons que l'ID de l'utilisateur est stocké dans la session
+
+    // Appeler la fonction d'insertion d'image du modèle
+    $imageModel->insertImage($filename, $date, $lieu, $user_id);
+
+    // Redirection après l'ajout de l'image
+    header("Location: some_page.php");
+    exit();
+}
+?>

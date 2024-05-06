@@ -43,7 +43,9 @@ if (session_id() === '') {
 
                     <?php if(isset($_SESSION['username']) && isset($_SESSION['admin']) && $_SESSION['admin']): ?>
                         <!-- Ce lien ne s'affichera que si l'utilisateur est connecté en tant qu'admin -->
-                        <li><a class="nav-link" href="/my-app/admin.php">Vue admin</a></li>
+                        <li>    
+                            <a class="nav-link" href="/my-app/admin.php">Vue admin</a>
+                        </li>
                     <?php endif; ?>
                 </ul>
             </div>

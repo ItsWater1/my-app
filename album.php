@@ -18,7 +18,6 @@ date_default_timezone_set('Europe/Zurich');
 
 $imageModel = new ImageModel($conn);
 
-
 // Récupérer les dates distinctes 
 $listeDates = $imageModel->getDistinctYears();
 
@@ -48,7 +47,6 @@ if (!empty($anneeFilter) && !empty($images)) {
     });
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">

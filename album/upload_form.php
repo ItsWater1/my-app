@@ -44,6 +44,14 @@ $listeLieux = $imageModel->getDistinctLieux();
                         <h2 class="card-title">Ajouter une nouvelle photo</h2>
                     </div>
                     <div class="card-body">
+                        <?php
+                        // Vérifier s'il y a un message d'erreur dans la session
+                        if (isset($_SESSION['error_message'])) {
+                            echo '<div class="alert alert-danger" role="alert">' . $_SESSION['error_message'] . '</div>';
+                            // Une fois affiché, nettoyer la variable de session
+                            unset($_SESSION['error_message']);
+                        }
+                        ?>
                         <form action="image_upload.php" method="post" enctype="multipart/form-data">
                             <div class="mb-3">
                                 <label for="image" class="form-label">Image :</label>

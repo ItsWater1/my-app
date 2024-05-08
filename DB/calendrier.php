@@ -1,7 +1,5 @@
 <?php
 // Requête qui récupère les manifestations et leurs dates afin de les ajouter dans le calendrier (calendar.php).
-// ATTENTION : SECURISER LES REQUETES DANS TOUT LE DOSSIER
-
 include('DB_connexion.php');
 
 // Préparation de la requête SQL

@@ -100,7 +100,7 @@ if (!empty($anneeFilter) && !empty($images)) {
     ?>
 </div>
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-left">
         <?php foreach ($images as $image): ?>
             <div class="col-md-3">
                 <div class="image-container">

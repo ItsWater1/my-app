@@ -56,7 +56,7 @@ $images = $imageModel->getAllImages();
 <body>
 <div class="container mt-5">
     <h2 class="text-center mb-4">Administration des images</h2>
-    <div class="row justify-content-center">
+    <div class="row justify-content-left">
         <?php foreach ($images as $image): ?>
             <div class="col-md-3">
                 <div class="image-container">

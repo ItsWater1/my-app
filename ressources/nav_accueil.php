@@ -11,6 +11,7 @@ if (session_id() === '') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="/my-app/images/logo.png" />
     <title>Page d'Accueil</title>
     <link href="/my-app/bootstrap/bootstrap.min.css" rel="stylesheet">
     <script src="/my-app/bootstrap/bootstrap.bundle.min.js"></script>
@@ -27,6 +28,7 @@ if (session_id() === '') {
             background: rgba(255, 255, 255, 0); /* Uniquement le fond est transparent */
             z-index: 1000;
             padding: 10px 0;
+            opacity: 10;
         }
         .navbar a, .navbar button {
             background: rgba(0, 0, 0, 0.5); /* Fond semi-transparent pour les liens et boutons */

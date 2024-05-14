@@ -2,7 +2,7 @@
 // C'est la page d'accueil du site quand on se connecte en utilisateur. 
 
 session_start();
-include('ressources/nav.php');
+include('ressources/nav_accueil.php');
 include('ressources/footer.php');
 
 if (!isset($_SESSION['username'])) {
@@ -25,11 +25,18 @@ if (!isset($_SESSION['username'])) {
             padding: 0;
             height: 100%;
         }
+        .navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(255, 255, 255, 0.5); /* Fond partiellement transparent */
+            z-index: 1000; /* Assure que la nav est au-dessus du diaporama */
+        }
         .slideshow-container {
             position: relative;
             width: 100%;
-            height: calc(100vh - 120px); /* Adjust the 120px to fit your nav and footer height */
-            overflow: hidden;
+            height: calc(100vh - 68px); /* Ajustez en fonction de la hauteur du footer */
+            top: 0;
         }
         .slide {
             position: absolute;
@@ -41,18 +48,17 @@ if (!isset($_SESSION['username'])) {
         .slide img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* change to 'contain' if you don't want any part of the image to be cut off */
+            object-fit: cover;
         }
         .text {
             position: absolute;
-            top: 90%; /* Modifiez cette valeur pour ajuster la hauteur à laquelle le texte apparaît */
+            top: 90%; /* Ajustez cette valeur pour déplacer le texte verticalement */
             left: 20px;
             color: white;
             font-size: 20px;
             background: rgba(0, 0, 0, 0.5);
             padding: 10px;
         }
-
         .active {
             opacity: 1;
         }

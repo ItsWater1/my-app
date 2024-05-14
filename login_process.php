@@ -36,7 +36,7 @@ if(isset($_POST['captcha'])){
                     if ($_SESSION['admin']) {
                         header("Location: /my-app/admin.php");
                     } else {
-                        header("Location: /my-app/index.php");
+                        header("Location: /my-app/accueil.php");
                     }
                     exit(); 
                 } else {

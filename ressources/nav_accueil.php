@@ -25,28 +25,43 @@ if (session_id() === '') {
             position: fixed;
             width: 100%;
             top: 0;
-            background: rgba(255, 255, 255, 0); /* Uniquement le fond est transparent */
             z-index: 1000;
             padding: 10px 0;
-            opacity: 10;
+            color: white; /* Assurez-vous que le texte est visible */
+        }
+        .navbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0); /* Fond transparent */
+            opacity: 0; /* Fond complètement invisible */
+            z-index: -1;
         }
         .navbar a, .navbar button {
-            background: rgba(0, 0, 0, 0.5); /* Fond semi-transparent pour les liens et boutons */
-            color: white; /* Couleur du texte */
-            padding: 10px 20px; /* Padding pour augmenter la taille et l'espacement */
-            margin: 0 10px; /* Marge autour des boutons et liens */
-            border-radius: 5px; /* Bordures arrondies pour les boutons */
-            transition: background 0.3s ease; /* Transition pour un effet au survol */
+            background: rgba(0, 0, 0, 0.7); /* Fond semi-transparent pour les liens et boutons */
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
         }
         .navbar a:hover, .navbar button:hover {
-            background: rgba(0, 0, 0, 0.8); /* Fond plus foncé au survol */
+            background: rgba(0, 0, 0, 0.85); /* Fond plus foncé au survol */
+        }
+        .navbar-brand img {
+            height: 40px; /* ou toute autre taille appropriée */
+            vertical-align: middle;
         }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid"> 
-            <a href="/my-app/accueil.php" class="navbar-brand">Logo</a>
+            <a href="/my-app/accueil.php" class="navbar-brand">
+                <img src="/my-app/images/logo.png" alt="Logo" style="height: 40px;"> <!-- Assurez-vous que le chemin vers l'image est correct -->
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -67,7 +82,7 @@ if (session_id() === '') {
                     <li class="nav-item">
                         <a class="nav-link" href="/my-app/album/image_user.php">Mes images</a>
                     </li>
-                    <li class="nav-item">
+                    <li the="nav-item">
                         <a class="nav-link" href="/my-app/album/upload_form.php">Ajouter une photo</a>
                     </li>
                     <?php if(isset($_SESSION['username']) && isset($_SESSION['admin']) && $_SESSION['admin']): ?>

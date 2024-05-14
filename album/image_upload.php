@@ -1,15 +1,13 @@
 <?php
 // Processus d'ajout des images. L'image est ajoutée dans la base de données et dans le dossier uploads. 
-
-include('../DB/DB_connexion.php');
-include('imageModel.php');
-
 session_start();
 if (!isset($_SESSION['username'])) {
     header("Location: /my-app/login.php");
     exit();
 }
 
+include('../DB/DB_connexion.php');
+include('imageModel.php');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Vérifier si le fichier téléversé est une image
     $file_info = getimagesize($_FILES["image"]["tmp_name"]);

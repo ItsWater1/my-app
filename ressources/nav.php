@@ -7,55 +7,74 @@ if (session_id() === '') {
 ?>
 
  
- <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="/my-app/images/logo.png" />
-
+    <link href="/my-app/bootstrap/bootstrap.min.css" rel="stylesheet">
+    
     <style>
-    .navbar-custom {
-        background-color: lightblue; /* Couleur de fond */
-        display: flex;
-        align-items: center; /* Aligner verticalement les éléments */
-    }
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        .navbar {
+            background-color: lightblue; /* Light blue background */
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 10px 0;
+            display: flex; /* Use flexbox */
+            align-items: center; /* Center alignment vertically */
+            justify-content: space-between; /* Spread content */
+            color: white;
+        }
+        .navbar a, .navbar button {
+            background: none; /* Transparent background */
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .navbar a:hover, .navbar button:hover {
+            background: rgba(255, 255, 255, 0.2); /* Slight highlight on hover */
+        }
+        .navbar-brand img {
+            height: 40px; /* Adjust size as necessary */
+            vertical-align: middle;
+            border: none;
+        }
+        .navbar .btn-danger {
+            color: white; /* Ensure text is white */
+            background-color: #d9534f; /* Bright red background */
+            border-color: #d43f3a; /* Slightly darker border */
+            padding: 10px 20px; /* Increase padding for better visibility */
+        }
 
-    .navbar-custom .nav-link {
-        color: #000; /* Couleur du texte */
-        transition: color 0.3s; /* Transition de couleur */
-        padding: 8px 15px; /* Ajuster selon besoin */
-    }
+        .navbar .btn-danger:hover {
+            background-color: #c9302c; /* Darker red on hover */
+            border-color: #ac2925;
+        }
 
-    .navbar-custom .nav-link:hover {
-        color: blue; /* Couleur au survol */
-        text-decoration: none; /* Enlever le soulignement */
-    }
-
-    .navbar-custom .btn-danger {
-        background-color: #d9534f; /* Rouge plus vif */
-        border-color: #d43f3a; /* Bordure un peu plus sombre */
-        padding: 6px 15px; /* Assurez que le padding correspond aux nav-links */
-        margin-top: 10px; /* Ajuster en fonction des besoins pour aligner verticalement */
-    }
-
-    .navbar-custom .btn-danger:hover {
-        background-color: #c9302c; /* Rouge au survol */
-        border-color: #ac2925; /* Bordure au survol */
-    }
-
-    .form-inline {
-        display: flex;
-        align-items: center; /* Ceci aide à aligner le bouton avec les liens */
-    }
     </style>
-</head>
- 
- <!-- Navbar -->
- <nav class="navbar navbar-expand-lg navbar-custom">
-        <div class="container-fluid"> 
-            <form class="me-auto" action="/my-app/logout.php" method="post">
-                <button type="submit" class="btn btn-danger">Se déconnecter</button>
-            </form>
 
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a href="/my-app/accueil.php" class="navbar-brand">
+                <img src="/my-app/images/logo.png" alt="Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" href="/my-app/accueil.php">Accueil</a>
                     </li>
@@ -74,17 +93,19 @@ if (session_id() === '') {
                     <li class="nav-item">
                         <a class="nav-link" href="/my-app/album/upload_form.php">Ajouter une photo</a>
                     </li>
-                    
-
                     <?php if(isset($_SESSION['username']) && isset($_SESSION['admin']) && $_SESSION['admin']): ?>
-                        <!-- Ce lien ne s'affichera que si l'utilisateur est connecté en tant qu'admin -->
-                        <li>    
-                            <a class="nav-link" href="/my-app/admin.php">Vue admin</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/my-app/admin.php">Vue admin</a>
+                    </li>
                     <?php endif; ?>
                 </ul>
+                <form class="d-flex" action="/my-app/logout.php" method="post">
+                    <button type="submit" class="btn btn-danger">Se déconnecter</button>
+                </form>
             </div>
         </div>
-    </nav>
+        </nav>
     
-    <script src="/my-app/bootstrap/bootstrap.bundle.min.js"></script>
+        <script src="/my-app/bootstrap/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

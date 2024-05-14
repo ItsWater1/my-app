@@ -36,24 +36,37 @@ if (session_id() === '') {
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(255, 255, 255, 0); /* Fond transparent */
+            background: rgba(255, 255, 255, 0); /* Fond totalement transparent */
             opacity: 0; /* Fond complètement invisible */
             z-index: -1;
         }
         .navbar a, .navbar button {
-            background: rgba(0, 0, 0, 0.7); /* Fond semi-transparent pour les liens et boutons */
+            background: none; /* Aucun fond pour les liens et boutons */
             padding: 10px 20px;
             margin: 0 10px;
             border-radius: 5px;
             transition: background 0.3s ease;
         }
         .navbar a:hover, .navbar button:hover {
-            background: rgba(0, 0, 0, 0.85); /* Fond plus foncé au survol */
+            background: none; /* Pas de changement au survol */
         }
         .navbar-brand img {
             height: 40px; /* ou toute autre taille appropriée */
             vertical-align: middle;
+            border: none; /* Pas de bordure pour le logo */
         }
+
+        .navbar .btn-danger {
+            color: white; /* White text to stand out on the red background */
+            background-color: #d9534f; /* Bright red background */
+            border-color: #d43f3a; /* Slightly darker red for the border */
+        }
+
+        .navbar .btn-danger:hover {
+            background-color: #c9302c; /* Darker red when hovered */
+            border-color: #ac2925; /* Darker border on hover */
+        }
+
     </style>
 </head>
 <body>
@@ -82,7 +95,7 @@ if (session_id() === '') {
                     <li class="nav-item">
                         <a class="nav-link" href="/my-app/album/image_user.php">Mes images</a>
                     </li>
-                    <li the="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="/my-app/album/upload_form.php">Ajouter une photo</a>
                     </li>
                     <?php if(isset($_SESSION['username']) && isset($_SESSION['admin']) && $_SESSION['admin']): ?>

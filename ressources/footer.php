@@ -31,10 +31,10 @@
         © 2024 Jeunesse Treycovagnes Chamblon. Tous droits réservés.
     </div>
     <div class="footer-links">
-        <a href="/mentions-legales.php">Mentions légales</a>|
-        <a href="/politique-de-confidentialite.php">Politique de confidentialité</a>|
-        <a href="/contact.php">Contact</a>
-    </div>
+        <a href="/my-app/ressources/mentions-legales.php">Mentions légales</a>|
+        <a href="/my-app/ressources/politique-de-confidentialite.php">Politique de confidentialité</a>|
+        <a href=mailto:“arthur.wuthrich@eduvaud.ch”>Contact</a>
+</div>
 </footer>
 
 </body>

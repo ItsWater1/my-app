@@ -10,7 +10,7 @@ Le site contient également un album photo où chaque personne peut ajouter ses 
 
 * Un serveur Web
 * Pouvoir héberger une base de données MySQL
-* Avoir intallé PHP
+* Avoir installé PHP
 
 ## Instructions
 
@@ -21,5 +21,3 @@ Le site contient également un album photo où chaque personne peut ajouter ses 
 > En admin, vous pouvez gérer les différentes données (ajouts, suppression, modificaton)
 
 > En utiliateur, vous n'êtes qu'en lecture seule (excepté ajout d'images). 
-
-  

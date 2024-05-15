@@ -27,42 +27,46 @@ if (session_id() === '') {
             top: 0;
             z-index: 1000;
             padding: 10px 0;
-            color: white; /* Assurez-vous que le texte est visible */
-            
+            display: flex; /* Utilisation de flexbox pour une disposition cohérente */
+            align-items: center; /* Alignement des éléments verticalement au centre */
+            justify-content: space-between; /* Répartition égale des éléments dans la barre */
         }
-       
+
         .navbar a, .navbar button {
-            background: none; /* Aucun fond pour les liens et boutons */
+            background: none; /* Fond transparent pour les liens et boutons */
             padding: 10px 20px;
             margin: 0 10px;
             border-radius: 5px;
-            transition: background 0.3s ease;$
+            transition: background 0.3s ease;
         }
         .navbar a:hover, .navbar button:hover {
-            background: none; /* Pas de changement au survol */
+            background: rgba(255, 255, 255, 0.2); /* Léger highlight au survol */
         }
         .navbar-brand img {
-            height: 40px; /* ou toute autre taille appropriée */
+            height: 40px; /* Taille spécifique pour le logo */
             vertical-align: middle;
-            border: none; /* Pas de bordure pour le logo */
-            opacity: 100;
+            border: none;
         }
-
         .navbar .btn-danger {
-            color: white; /* White text to stand out on the red background */
-            background-color: #d9534f; /* Bright red background */
-            border-color: #d43f3a; /* Slightly darker red for the border */
+            color: white;
+            background-color: #d9534f;
+            border-color: #d43f3a;
+            padding: 10px 20px;
         }
-
         .navbar .btn-danger:hover {
-            background-color: #c9302c; /* Darker red when hovered */
-            border-color: #ac2925; /* Darker border on hover */
+            background-color: #c9302c;
+            border-color: #ac2925;
         }
-
+        .nav-link {
+            color: blue; /* Couleur spécifique pour les liens */
+        }
+        .nav-link:hover {
+            color: white; /* Couleur du texte au survol */
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg bg-transparent">
         <div class="container-fluid"> 
             <a href="/my-app/accueil.php" class="navbar-brand">
                 <img src="/my-app/images/logo.png" alt="Logo" style="height: 40px;">

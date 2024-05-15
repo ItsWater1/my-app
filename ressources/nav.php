@@ -60,7 +60,7 @@ if (!isset($_SESSION['username'])) {
             background-color: #c9302c; /* Darker red on hover */
             border-color: #ac2925;
         }
-
+        
     </style>
 
 </head>

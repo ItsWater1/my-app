@@ -1,8 +1,9 @@
 <?php
 // Barre de navigation de l'interface utilisateur, les admins peuvent basculer entre la vue admin et utilisateur via cette barre.
 
-if (session_id() === '') {
-    session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: /my-app/login.php");
+    exit();
 }
 ?>
 

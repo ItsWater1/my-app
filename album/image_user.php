@@ -1,15 +1,15 @@
 <?php
 // Page d'affichage pour les admins -> permet la suppression des images.
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: /my-app/login.php");
+    exit();
+}
 
 include('../DB/DB_connexion.php');
 include('../ressources/nav.php');
 include('../ressources/footer.php');
 include('imageModel.php');
-
-if (!isset($_SESSION['username'])) {
-    header("Location: /my-app/login.php");
-    exit();
-}
 
 // Définir le fuseau horaire
 date_default_timezone_set('Europe/Zurich');

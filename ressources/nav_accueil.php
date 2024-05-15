@@ -28,24 +28,15 @@ if (session_id() === '') {
             z-index: 1000;
             padding: 10px 0;
             color: white; /* Assurez-vous que le texte est visible */
+            
         }
-        .navbar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0); /* Fond totalement transparent */
-            opacity: 0; /* Fond complètement invisible */
-            z-index: -1;
-        }
+       
         .navbar a, .navbar button {
             background: none; /* Aucun fond pour les liens et boutons */
             padding: 10px 20px;
             margin: 0 10px;
             border-radius: 5px;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease;$
         }
         .navbar a:hover, .navbar button:hover {
             background: none; /* Pas de changement au survol */
@@ -54,6 +45,7 @@ if (session_id() === '') {
             height: 40px; /* ou toute autre taille appropriée */
             vertical-align: middle;
             border: none; /* Pas de bordure pour le logo */
+            opacity: 100;
         }
 
         .navbar .btn-danger {
@@ -73,7 +65,7 @@ if (session_id() === '') {
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid"> 
             <a href="/my-app/accueil.php" class="navbar-brand">
-                <img src="/my-app/images/logo.png" alt="Logo" style="height: 40px;"> <!-- Assurez-vous que le chemin vers l'image est correct -->
+                <img src="/my-app/images/logo.png" alt="Logo" style="height: 40px;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

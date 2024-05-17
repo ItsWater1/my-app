@@ -1,7 +1,7 @@
 <?php
 // Formulaire de création d'une manifestation (page admin).
 
-include('../DB/liste_ajout.php');
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/liste_ajout.php");
 session_start();
 
 if (!isset($_SESSION['username'])) {

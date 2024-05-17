@@ -1,15 +1,13 @@
 <?php
-session_start();
+// C'est la page d'accueil admin, elle contient le tableau des manifestations avec les boutons pour les gérer (suppression, modification, ajout).
+sesson_start();
 if (!isset($_SESSION['username']) || !$_SESSION['admin']) {
     header("Location: /my-app/login.php");
     exit();
 }
-// C'est la page d'accueil admin, elle contient le tableau des manifestations avec les boutons pour les gérer (suppression, modification, ajout).
 
 include('ressources/nav_adm.php');
 include('ressources/footer.php');
-
-
 
 ?>
 
@@ -23,6 +21,7 @@ include('ressources/footer.php');
     <script src="/my-app/bootstrap/boostrap.bundle.min.js"></script>
     
 </head>
+
 <body>
     <div class="container">
         <br />

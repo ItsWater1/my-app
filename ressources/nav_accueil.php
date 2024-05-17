@@ -64,6 +64,8 @@ if (session_id() === '') {
             color: white; /* Couleur du texte au survol */
         }
     </style>
+
+
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-transparent">

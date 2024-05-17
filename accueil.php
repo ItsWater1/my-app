@@ -1,6 +1,5 @@
 <?php
 // C'est la page d'accueil du site quand on se connecte en utilisateur. 
-
 session_start();
 if (!isset($_SESSION['username'])) {
     header("Location: /my-app/login.php");
@@ -20,7 +19,16 @@ include('ressources/footer.php');
     <title>Page d'accueil</title>
     <link href="/my-app/bootstrap/bootstrap.min.css" rel="stylesheet">
     <script src="/my-app/bootstrap/bootstrap.bundle.min.js"></script>
+    
     <style>
+        .nav-link.nav-link-dark {
+            color: black; /* Couleur pour fond clair */
+        }
+
+        .nav-link.nav-link-light {
+            color: white; /* Couleur pour fond foncé */
+        }
+
         body, html {
             margin: 0;
             padding: 0;
@@ -64,7 +72,9 @@ include('ressources/footer.php');
             opacity: 1;
         }
     </style>
+
 </head>
+
 <body>
     <div class="slideshow-container">
         <!-- Slides -->
@@ -85,15 +95,40 @@ include('ressources/footer.php');
             <div class="text">Bienvenue sur notre site !</div>
         </div>
     </div>
+
     <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        setInterval(() => {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }, 5000);
-    </script>
+    const slides = document.querySelectorAll('.slide');
+    const links = document.querySelectorAll('.nav-link');
+    let currentSlide = 0; // Déclarer une seule fois
+
+    function updateLinkColors() {
+        // Supprimer toutes les classes de couleur préalables
+        links.forEach(link => {
+            link.classList.remove('nav-link-dark', 'nav-link-light');
+        });
+
+        // Ajouter la classe en fonction de l'image visible
+        if (currentSlide === 1 || currentSlide === 3) { // Supposons que les images paires sont claires et impaires foncées
+            links.forEach(link => link.classList.add('nav-link-dark'));
+        } else {
+            links.forEach(link => link.classList.add('nav-link-light'));
+        }
+    }
+
+    function changeSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+        updateLinkColors();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        setInterval(changeSlide, 5000); // Déplacer setInterval dans DOMContentLoaded
+        updateLinkColors(); // Mise à jour initiale des couleurs
+    });
+</script>
+
+
 </body>
 </html>
 

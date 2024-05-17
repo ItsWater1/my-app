@@ -6,10 +6,10 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-include('../DB/DB_connexion.php');
-include('../ressources/nav.php');
-include('../ressources/footer.php');
-include('imageModel.php');
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/DB_connexion.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/nav.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/album/ImageModel.php");
 
 // Définir le fuseau horaire
 date_default_timezone_set('Europe/Zurich');

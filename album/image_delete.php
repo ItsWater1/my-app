@@ -7,8 +7,8 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-include('../DB/DB_connexion.php');
-include('imageModel.php');
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/DB_connexion.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/album/ImageModel.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
     $image_id = $_GET['id'];

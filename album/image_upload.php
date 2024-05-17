@@ -6,8 +6,9 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-include('../DB/DB_connexion.php');
-include('imageModel.php');
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/DB_connexion.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/album/ImageModel.php");
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Vérifier si le fichier téléversé est une image
     $file_info = getimagesize($_FILES["image"]["tmp_name"]);

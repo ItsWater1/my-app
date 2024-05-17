@@ -2,8 +2,8 @@
 // Formulaire d'ajout d'image
 session_start();
 
-include('../ressources/nav.php');
-include('../ressources/footer.php');
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/nav.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
 
 if (!isset($_SESSION['username'])) {
     header("Location: /my-app/login.php");

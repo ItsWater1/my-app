@@ -1,6 +1,6 @@
 <?php
 // C'est la page d'accueil admin, elle contient le tableau des manifestations avec les boutons pour les gérer (suppression, modification, ajout).
-sesson_start();
+session_start();
 if (!isset($_SESSION['username']) || !$_SESSION['admin']) {
     header("Location: /my-app/login.php");
     exit();

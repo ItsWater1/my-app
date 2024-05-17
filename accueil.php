@@ -97,37 +97,36 @@ include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
     </div>
 
     <script>
-    const slides = document.querySelectorAll('.slide');
-    const links = document.querySelectorAll('.nav-link');
-    let currentSlide = 0; // Déclarer une seule fois
+        const slides = document.querySelectorAll('.slide');
+        const links = document.querySelectorAll('.nav-link');
+        let currentSlide = 0; // Déclarer une seule fois
 
-    function updateLinkColors() {
-        // Supprimer toutes les classes de couleur préalables
-        links.forEach(link => {
-            link.classList.remove('nav-link-dark', 'nav-link-light');
-        });
+        function updateLinkColors() {
+            // Supprimer toutes les classes de couleur préalables
+            links.forEach(link => {
+                link.classList.remove('nav-link-dark', 'nav-link-light');
+            });
 
-        // Ajouter la classe en fonction de l'image visible
-        if (currentSlide === 1 || currentSlide === 3) { // Supposons que les images paires sont claires et impaires foncées
-            links.forEach(link => link.classList.add('nav-link-dark'));
-        } else {
-            links.forEach(link => link.classList.add('nav-link-light'));
+            // Ajouter la classe en fonction de l'image visible
+            if (currentSlide === 1 || currentSlide === 3) { // Supposons que les images paires sont claires et impaires foncées
+                links.forEach(link => link.classList.add('nav-link-dark'));
+            } else {
+                links.forEach(link => link.classList.add('nav-link-light'));
+            }
         }
-    }
 
-    function changeSlide() {
-        slides[currentSlide].classList.remove('active');
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add('active');
-        updateLinkColors();
-    }
+        function changeSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+            updateLinkColors();
+        }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        setInterval(changeSlide, 5000); // Déplacer setInterval dans DOMContentLoaded
-        updateLinkColors(); // Mise à jour initiale des couleurs
-    });
+        document.addEventListener('DOMContentLoaded', () => {
+            setInterval(changeSlide, 5000); // Déplacer setInterval dans DOMContentLoaded
+            updateLinkColors(); // Mise à jour initiale des couleurs
+        });
 </script>
-
 
 </body>
 </html>

@@ -55,9 +55,9 @@ include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
             .then(data => {
 
                 // Remplace les valeurs null par "aucun"
-               data.forEach(row => {
-            if (row.Benefice === null) {
-                row.Benefice = "Aucun";
+                data.forEach(row => {
+                if (row.Benefice === null) {
+                    row.Benefice = "Aucun";
             }});
 
                 // Insère les données dans le tableau HTML

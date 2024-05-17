@@ -34,7 +34,8 @@ $images = array();
 // Filtre par localisation
 if (!empty($lieuFilter)) {
     $images = $imageModel->getByLocation($lieuFilter);
-} else {
+}
+else {
     // Si aucun filtre par lieu n'est spécifié, récupérer toutes les images
     $images = $imageModel->getAllImages();
 }

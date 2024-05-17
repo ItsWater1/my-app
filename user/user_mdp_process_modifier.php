@@ -1,7 +1,8 @@
 <?php
 // Processus de modification du mot de passe
 
-include('../DB/DB_connexion.php');
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/DB_connexion.php");
+
 session_start();
 
 // Vérifie si l'utilisateur est connecté

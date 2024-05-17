@@ -1,7 +1,8 @@
 <?php
 // Processus de création de l'utilisateur
 
-include('../DB/DB_connexion.php');
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/DB_connexion.php");
+
 session_start();
 
 if (!isset($_SESSION['username'])) {

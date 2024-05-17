@@ -3,10 +3,10 @@
 
 session_start();
 
-include('ressources/nav.php');
-include('ressources/footer.php');
-include('DB/DB_connexion.php'); 
-include('album/imageModel.php'); 
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/nav.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/DB_connexion.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/album/imageModel.php");
 
 if (!isset($_SESSION['username'])) {
     header("Location: /my-app/login.php");

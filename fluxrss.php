@@ -4,8 +4,8 @@
 date_default_timezone_set('Europe/Zurich');
 
 // inclure les requêtes et la connexion à la DB
-include('/DB/DB_connexion.php');
-include('/DB/requeterss.php');
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/DB_connexion.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/requeterss.php");
 ?>
 
 <!-- Création du flux RSS -->

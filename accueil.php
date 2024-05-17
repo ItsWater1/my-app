@@ -6,8 +6,8 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-include('ressources/nav_accueil.php');
-include('ressources/footer.php');
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/nav_accueil.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
 
 ?>
 

@@ -1,7 +1,7 @@
 <?php
 // Requête afin de créer le tableau qui contient toutes les manifestations.
 
-include('DB_connexion.php');
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/DB_connexion.php");
 
 // Requête préparée pour récupérer les informations sur les manifestations
 $sql = "SELECT

@@ -3,7 +3,7 @@
 // Est utilisé sur la page admin pour l'ajout ou la modification de manifs.
 
 // Inclure le fichier de connexion à la base de données
-include('/DB_connexion.php');
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/DB_connexion.php");
 
 // Requête préparée pour récupérer les lieux
 $sqlLieu = "SELECT * FROM t_lieu WHERE id_lieu IN (?, ?) ORDER BY NomLieu";

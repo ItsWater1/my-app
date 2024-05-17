@@ -1,4 +1,5 @@
 <?php
+// Page des mentions légales
 session_start();
 if (!isset($_SESSION['username'])) {
     header("Location: /my-app/login.php");

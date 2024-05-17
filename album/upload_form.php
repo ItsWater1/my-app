@@ -1,4 +1,5 @@
 <?php
+// Formulaire d'ajout d'image
 session_start();
 
 include('../ressources/nav.php');

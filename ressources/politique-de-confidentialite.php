@@ -1,4 +1,5 @@
 <?php
+// Page de la politique de confidentialité
 session_start();
 if (!isset($_SESSION['username'])) {
     header("Location: /my-app/login.php");

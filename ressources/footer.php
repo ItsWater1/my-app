@@ -1,3 +1,7 @@
+<?php
+// Footer du site
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>

@@ -1,7 +1,5 @@
--- OM 2021.02.17
--- FICHIER MYSQL POUR FAIRE FONCTIONNER LES EXEMPLES
--- DE REQUETES MYSQL
--- Database: WUTHRICH_ARTHUR_INFO1A_JEUNESSE_164_2022
+-- AW - 17.05.2024
+-- Database: module151_jeunesse
 
 -- Détection si une autre base de donnée du même nom existe
 
@@ -13,14 +11,13 @@ CREATE DATABASE IF NOT EXISTS module151_jeunesse;
 
 -- Utilisation de cette base de donnée
 
-USE module151_jeunesse;
+USE module151_jeunesse;-- phpMyAdmin SQL Dump
 
--- phpMyAdmin SQL Dump
 -- version 4.5.4.1
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mer 27 Mars 2024 à 10:59
+-- Généré le :  Mar 14 Mai 2024 à 16:45
 -- Version du serveur :  5.7.11
 -- Version de PHP :  7.0.3
 
@@ -49,13 +46,6 @@ CREATE TABLE `t_image` (
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Contenu de la table `t_image`
---
-
-INSERT INTO `t_image` (`id_image`, `filename`, `date`) VALUES
-(8, '6603f30062cb2_Shunsui.jpg', '2024-03-02');
-
 -- --------------------------------------------------------
 
 --
@@ -68,12 +58,17 @@ CREATE TABLE `t_image_avoir_lieu` (
   `fk_lieuimage` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Contenu de la table `t_image_avoir_lieu`
+-- Structure de la table `t_image_avoir_user`
 --
 
-INSERT INTO `t_image_avoir_lieu` (`id_image_avoir_lieu`, `fk_image`, `fk_lieuimage`) VALUES
-(8, 8, 1);
+CREATE TABLE `t_image_avoir_user` (
+  `id_image_avoir_user` int(11) NOT NULL,
+  `fk_imageUser` int(11) NOT NULL,
+  `fk_userImage` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -83,7 +78,7 @@ INSERT INTO `t_image_avoir_lieu` (`id_image_avoir_lieu`, `fk_image`, `fk_lieuima
 
 CREATE TABLE `t_lieu` (
   `id_lieu` int(11) NOT NULL,
-  `NomLieu` varchar(20) NOT NULL
+  `NomLieu` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -93,7 +88,54 @@ CREATE TABLE `t_lieu` (
 INSERT INTO `t_lieu` (`id_lieu`, `NomLieu`) VALUES
 (1, 'Treycovagnes'),
 (2, 'Chamblon'),
-(3, 'Champagne');
+(3, 'Champagne'),
+(4, 'Agiez'),
+(5, 'Arnex'),
+(6, 'Baulmes'),
+(7, 'Bavois'),
+(8, 'Belmont-sur-Yverdon'),
+(9, 'Bofflens'),
+(10, 'Bonvillars'),
+(11, 'Bretonnieres'),
+(12, 'Bullet'),
+(13, 'Champvent'),
+(14, 'Chavornay'),
+(15, 'Concise'),
+(16, 'Corcelles-Pres-Concise'),
+(17, 'Corcelles-sur-Chavornay'),
+(18, 'Cronay'),
+(19, 'Croy'),
+(20, 'Cuarny'),
+(21, 'Ependes'),
+(22, 'Essertines-sur-Yverdon'),
+(23, 'Fontaines'),
+(24, 'Juriens - La Praz'),
+(25, 'L\'Auberson'),
+(26, 'La Mauguettaz'),
+(27, 'Les Charbonnieres'),
+(28, 'Lignerolle'),
+(29, 'Mathod'),
+(30, 'Suscevaz'),
+(31, 'Molondin'),
+(32, 'Montagny'),
+(33, 'Montcherand'),
+(34, 'Onnens'),
+(35, 'Orny'),
+(36, 'Orzens - Gossens'),
+(37, 'Pomy'),
+(38, 'Provence - Mutrux'),
+(39, 'Rances'),
+(40, 'Romainmotier'),
+(41, 'Rovray'),
+(42, 'Suchy'),
+(43, 'Ursins'),
+(44, 'Valeyres-sous-Rances'),
+(45, 'Vallorbe'),
+(46, 'Vaulion'),
+(47, 'Vuarrens'),
+(48, 'Vugelles - Orges'),
+(49, 'Vuiteboeuf'),
+(50, 'Yvonand');
 
 -- --------------------------------------------------------
 
@@ -115,7 +157,7 @@ CREATE TABLE `t_manif` (
 INSERT INTO `t_manif` (`id_manif`, `Nom`, `Date`, `Benefice`) VALUES
 (1, 'AG', '2024-01-12', NULL),
 (2, 'Volley', '2024-03-16', NULL),
-(3, 'Apero nouveaux', '2024-06-29', NULL),
+(3, 'Apero nouveaux', '2024-06-30', NULL),
 (4, 'Repas soutient', '2024-10-11', NULL),
 (5, 'Bal', '2024-11-16', NULL),
 (6, 'Assemblee', '2024-01-24', NULL);
@@ -231,6 +273,14 @@ ALTER TABLE `t_image_avoir_lieu`
   ADD KEY `fk_lieuimage` (`fk_lieuimage`);
 
 --
+-- Index pour la table `t_image_avoir_user`
+--
+ALTER TABLE `t_image_avoir_user`
+  ADD PRIMARY KEY (`id_image_avoir_user`),
+  ADD KEY `fk_image` (`fk_imageUser`),
+  ADD KEY `fk_user` (`fk_userImage`);
+
+--
 -- Index pour la table `t_lieu`
 --
 ALTER TABLE `t_lieu`
@@ -278,32 +328,37 @@ ALTER TABLE `t_utilisateur`
 -- AUTO_INCREMENT pour la table `t_image`
 --
 ALTER TABLE `t_image`
-  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 --
 -- AUTO_INCREMENT pour la table `t_image_avoir_lieu`
 --
 ALTER TABLE `t_image_avoir_lieu`
-  MODIFY `id_image_avoir_lieu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_image_avoir_lieu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+--
+-- AUTO_INCREMENT pour la table `t_image_avoir_user`
+--
+ALTER TABLE `t_image_avoir_user`
+  MODIFY `id_image_avoir_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 --
 -- AUTO_INCREMENT pour la table `t_lieu`
 --
 ALTER TABLE `t_lieu`
-  MODIFY `id_lieu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_lieu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 --
 -- AUTO_INCREMENT pour la table `t_manif`
 --
 ALTER TABLE `t_manif`
-  MODIFY `id_manif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_manif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT pour la table `t_manif_avoir_lieu`
 --
 ALTER TABLE `t_manif_avoir_lieu`
-  MODIFY `id_manif_avoir_lieu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_manif_avoir_lieu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT pour la table `t_manif_avoir_type`
 --
 ALTER TABLE `t_manif_avoir_type`
-  MODIFY `id_manif_avoir_type` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_manif_avoir_type` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT pour la table `t_type`
 --
@@ -313,7 +368,7 @@ ALTER TABLE `t_type`
 -- AUTO_INCREMENT pour la table `t_utilisateur`
 --
 ALTER TABLE `t_utilisateur`
-  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Contraintes pour les tables exportées
 --
@@ -324,6 +379,13 @@ ALTER TABLE `t_utilisateur`
 ALTER TABLE `t_image_avoir_lieu`
   ADD CONSTRAINT `fk_image` FOREIGN KEY (`fk_image`) REFERENCES `t_image` (`id_image`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_lieuimage` FOREIGN KEY (`fk_lieuimage`) REFERENCES `t_lieu` (`id_lieu`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `t_image_avoir_user`
+--
+ALTER TABLE `t_image_avoir_user`
+  ADD CONSTRAINT `fk_imageUser` FOREIGN KEY (`fk_imageUser`) REFERENCES `t_image` (`id_image`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_userImage` FOREIGN KEY (`fk_userImage`) REFERENCES `t_utilisateur` (`id_utilisateur`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `t_manif_avoir_lieu`

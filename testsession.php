@@ -1,4 +1,5 @@
 <?php
+// A SUPPRIMER ET COMMENTER DANS LE RAPPORT.
 session_start();
 
 // Vérifie si des données sont stockées en session

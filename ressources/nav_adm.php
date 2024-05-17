@@ -1,3 +1,7 @@
+<?php 
+// Navigation pour la page admin.
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

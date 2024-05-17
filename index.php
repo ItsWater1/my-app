@@ -1,5 +1,5 @@
 <?php
-// C'est la page d'accueil du site quand on se connecte en utilisateur. 
+// C'est la page du tableau des manifs
 
 session_start();
 include('ressources/nav.php');

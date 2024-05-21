@@ -2,16 +2,17 @@
 // C'est la page qui affiche les images sur le site, on peut aussi trier les images par date ou lieu. 
 
 session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: /my-app/login.php");
+    exit();
+}
 
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/nav.php");
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/DB_connexion.php");
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/album/imageModel.php");
 
-if (!isset($_SESSION['username'])) {
-    header("Location: /my-app/login.php");
-    exit();
-}
+
 
 // Définir le fuseau horaire
 date_default_timezone_set('Europe/Zurich');

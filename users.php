@@ -9,7 +9,6 @@ if (!isset($_SESSION['username'])) {
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/nav_adm.php");
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
 
-
 ?>
 
 <!DOCTYPE html>

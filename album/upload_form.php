@@ -1,17 +1,15 @@
 <?php
 // Formulaire d'ajout d'image
 session_start();
-
-include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/nav.php");
-include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
-
 if (!isset($_SESSION['username'])) {
     header("Location: /my-app/login.php");
     exit();
 }
 
-include('../DB/DB_connexion.php'); // Inclure le fichier de connexion à la base de données
-include('imageModel.php'); // Inclure le modèle
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/nav.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/DB_connexion.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/album/imageModel.php");
 
 $imageModel = new ImageModel($conn); // Créer une instance du modèle
 

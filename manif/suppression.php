@@ -1,9 +1,9 @@
 <?php
 // Fichier du processus de suppression des manifestations. Contient les requêtes SQL.
 
-include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/DB_connexion.php");
-
 session_start();
+
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/DB_connexion.php");
 
 // Récupérer le nom de la manifestation à supprimer depuis le paramètre de l'URL
 $nomManifestation = $_GET['nomManifestation'];

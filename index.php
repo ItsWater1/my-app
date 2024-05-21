@@ -27,7 +27,7 @@ include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
             <h2>Jeunesse Treycovagnes - Chamblon 2024</h2>
         <br/>
 
-        <?php include('fluxrss.php'); ?>
+        <?php include($_SERVER['DOCUMENT_ROOT'] . "/my-app/fluxrss.php");?>
 
         <table class="table">
             <thead>

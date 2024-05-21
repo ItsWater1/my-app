@@ -28,7 +28,7 @@ include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
             <h2>Jeunesse Treycovagnes - Chamblon 2024</h2>
         <br/>
 
-        <?php include('fluxrss.php'); ?>
+        <?php include($_SERVER['DOCUMENT_ROOT'] . "/my-app/fluxrss.php");?>
    
         <div class="nav-buttons">
             <button class="btn btn-sm btn-primary" onclick="prevMonth()">Mois précédent</button>

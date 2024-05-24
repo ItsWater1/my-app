@@ -1,4 +1,4 @@
-<?php 
+<?php
 // Navigation pour la page admin.
 ?>
 
@@ -12,58 +12,54 @@
     
     <style>
         body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
+            margin: 0;  // Élimine les marges pour assurer que la barre de navigation couvre toute la largeur.
+            padding: 0; // Aucun padding pour une apparence uniforme.
+            height: 100%; // Hauteur totale pour empêcher les débordements inattendus.
         }
         .navbar {
-            background-color: lightblue; /* Light blue background */
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            padding: 10px 0;
-            display: flex; /* Use flexbox */
-            align-items: center; /* Center alignment vertically */
-            justify-content: space-between; /* Spread content */
-            color: white;
+            background-color: lightblue; // Fond bleu clair pour une distinction visuelle.
+            position: fixed; // Fixe la barre de navigation en haut de la page.
+            width: 100%; // Largeur complète pour une couverture totale.
+            top: 0; // Positionnée tout en haut de la page.
+            z-index: 1000; // Assure qu'elle reste au-dessus des autres contenus.
+            padding: 10px 0; // Padding vertical pour un bon espacement interne.
+            display: flex; // Flexbox pour un alignement flexible des éléments.
+            align-items: center; // Centre les éléments verticalement.
+            justify-content: space-between; // Distribue l'espace entre les éléments uniformément.
+            color: white; // Texte en blanc pour contraste avec le fond.
         }
         .navbar a, .navbar button {
-            background: none; /* Transparent background */
-            padding: 10px 20px;
-            margin: 0 10px;
-            border-radius: 5px;
-            transition: background 0.3s ease;
+            background: none; // Fond transparent pour un look épuré.
+            padding: 10px 20px; // Padding suffisant pour rendre les clics faciles.
+            margin: 0 10px; // Marge autour des liens pour de l'espace.
+            border-radius: 5px; // Coins arrondis pour une esthétique douce.
+            transition: background 0.3s ease; // Transition fluide pour le survol.
         }
         .navbar a:hover, .navbar button:hover {
-            background: rgba(255, 255, 255, 0.2); /* Slight highlight on hover */
+            background: rgba(255, 255, 255, 0.2); // Surbrillance légère au survol.
         }
         .navbar-brand img {
-            height: 40px; /* Adjust size as necessary */
-            vertical-align: middle;
-            border: none;
+            height: 40px; // Hauteur fixe du logo pour la cohérence.
+            vertical-align: middle; // Alignement vertical pour correspondre aux autres éléments.
+            border: none; // Pas de bordure autour du logo.
         }
         .navbar .btn-danger {
-            color: white; /* Ensure text is white */
-            background-color: #d9534f; /* Bright red background */
-            border-color: #d43f3a; /* Slightly darker border */
-            padding: 10px 20px; /* Increase padding for better visibility */
+            color: white; // Texte blanc pour un contraste fort.
+            background-color: #d9534f; // Rouge vif pour une visibilité accrue.
+            border-color: #d43f3a; // Bordure un peu plus foncée que le fond.
+            padding: 10px 20px; // Padding généreux pour un confort tactile.
         }
-
         .navbar .btn-danger:hover {
-            background-color: #c9302c; /* Darker red on hover */
-            border-color: #ac2925;
+            background-color: #c9302c; // Rouge plus foncé au survol.
+            border-color: #ac2925; // Bordure adaptée au changement de fond.
         }
-
     </style>
-
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a href="/my-app/accueil.php" class="navbar-brand">
-                <img src="/my-app/images/logo.png" alt="Logo">
+                <img src="/my-app/images/logo.png" alt="Logo"> // Logo de la compagnie.
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -84,12 +80,12 @@
                 </li>
                 </ul>
                 <form class="d-flex" action="/my-app/logout.php" method="post">
-                    <button type="submit" class="btn btn-danger">Se déconnecter</button>
+                    <button type="submit" class="btn btn-danger">Se déconnecter</button> // Bouton de déconnexion clairement visible.
                 </form>
             </div>
         </div>
-        </nav>
+    </nav>
     
-        <script src="/my-app/bootstrap/bootstrap.bundle.min.js"></script>
-    </body>
+    <script src="/my-app/bootstrap/bootstrap.bundle.min.js"></script>
+</body>
 </html>

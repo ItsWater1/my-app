@@ -1,13 +1,16 @@
 <?php
 // Formulaire de modification du niveau de droits de l'utilisateur
 
+// Démarrage de la session pour maintenir et vérifier l'état de connexion de l'utilisateur
 session_start();
 
+// Vérifie si l'utilisateur est connecté, sinon redirige vers la page de connexion
 if (!isset($_SESSION['username'])) {
     header("Location: /my-app/login.php");
     exit();
 }
 
+// Récupère le nom d'utilisateur à partir de l'URL pour pré-remplir le formulaire
 $user = $_GET['user'];
 ?>
 
@@ -21,31 +24,31 @@ $user = $_GET['user'];
     <link href="/my-app/bootstrap/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #f8f9fa; // Couleur de fond pour une apparence propre et moderne.
         }
         .container {
-            margin-top: 50px;
+            margin-top: 50px; // Espace au-dessus du contenu pour éviter l'overlap avec la navbar.
         }
     </style>
 </head>
 <body>
     <div class="container">
         <br />
-        <?php echo "<h2>Modifier le niveau de droit de : $user</h2>";?>
+        <h2>Modifier le niveau de droit de : <?php echo $user; ?></h2> // Affiche dynamiquement le nom de l'utilisateur à modifier
         <form action="/my-app/user/user_lvl_process_modifier.php" method="post">
             <div class="form-group">
                 <label for="nouveaulvl">Nouveau niveau de droits :</label>
                 <select id="nouveaulvl" name="nouveaulvl" required class="form-control">
-                    <option>0</option>
-                    <option>1</option>
+                    <option>0</option> // Option pour un utilisateur standard
+                    <option>1</option> // Option pour un utilisateur avec des droits administratifs
                 </select>
             </div>
-            <input type="hidden" name="user" value="<?php echo $user; ?>">
-            <button type="submit" class="btn btn-primary">Modifier</button>
+            <input type="hidden" name="user" value="<?php echo $user; ?>"> // Champ caché pour transmettre en toute sécurité le nom de l'utilisateur
+            <button type="submit" class="btn btn-primary">Modifier</button> // Bouton pour soumettre le formulaire
         </form>
     </div>
 
-    <!-- Inclure le CDN Bootstrap JS -->
+    <!-- Scripts JavaScript pour Bootstrap -->
     <script src="/my-app/JS/jquery-3.7.1.js"></script>
     <script src="/my-app/JS/popper.min.js"></script>
     <script src="/my-app/bootstrap/bootstrap.min.js"></script>

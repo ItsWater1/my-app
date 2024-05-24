@@ -1,13 +1,15 @@
 <?php
 // C'est la page de connexion du site, il faut entrer un nom d'utilisateur, un mot de passe et valider le captcha. 
 
+// Initialisation de la session pour le suivi de l'utilisateur et gestion du CAPTCHA.
 session_start();
 
+// Vérification de la soumission du CAPTCHA et comparaison avec la valeur stockée en session.
 if(isset($_POST['captcha'])){
     if($_POST['captcha'] == $_SESSION['captcha']) {
-        echo "Captcha valide";
+        echo "Captcha valide"; // Affiche un message si le CAPTCHA est correct.
     } else {
-        echo "Captcha invalide";
+        echo "Captcha invalide"; // Affiche un message si le CAPTCHA est incorrect.
     }
 }
 ?>
@@ -24,6 +26,7 @@ if(isset($_POST['captcha'])){
 <body>
     <div class="container">
         <h2>Connexion</h2>
+        <!-- Formulaire de connexion demandant nom d'utilisateur et mot de passe -->
         <form action="login_process.php" method="post">
             <div class="form-group">
                 <label for="username">Nom d'utilisateur :</label>
@@ -34,13 +37,14 @@ if(isset($_POST['captcha'])){
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
             <br>
-            <!-- Mise en place du captcha -->
+            <!-- Champ pour le CAPTCHA pour vérifier que l'utilisateur n'est pas un robot -->
             <div>
-                <img src="/my-app/ressources/captcha.php"/>
+                <img src="/my-app/ressources/captcha.php"/> <!-- Image générée pour le CAPTCHA -->
                 <input type="text" class="form-control" name="captcha" placeholder="Entrez le Captcha" required>
-                </div>
+            </div>
             <button type="submit" class="btn btn-primary">Se connecter</button>
+        </form>
     </div>
-    <script src="/my-app/bootstrap/boostrap.bundle.min.js"></script>
+    <script src="/my-app/bootstrap/bootstrap.bundle.min.js"></script>
 </body>
 </html>

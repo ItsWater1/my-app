@@ -1,14 +1,18 @@
 <?php
-// C'est la page d'accueil du site quand on se connecte en utilisateur. 
+// Page d'accueil du site
+
+// Démarre une nouvelle session ou reprend une session existante
 session_start();
+
+// Redirige vers la page de connexion si l'utilisateur n'est pas connecté
 if (!isset($_SESSION['username'])) {
     header("Location: /my-app/login.php");
     exit();
 }
 
+// Inclut les fichiers pour la navigation et le pied de page
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/nav_accueil.php");
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
-
 ?>
 
 <!DOCTYPE html>
@@ -21,12 +25,13 @@ include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
     <script src="/my-app/bootstrap/bootstrap.bundle.min.js"></script>
     
     <style>
+        /* Styles spécifiques pour les liens de navigation et le corps de la page */
         .nav-link.nav-link-dark {
-            color: black; /* Couleur pour fond clair */
+            color: black; // Texte foncé pour fond clair
         }
 
         .nav-link.nav-link-light {
-            color: white; /* Couleur pour fond foncé */
+            color: white; // Texte clair pour fond foncé
         }
 
         body, html {
@@ -38,13 +43,13 @@ include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
             position: fixed;
             width: 100%;
             top: 0;
-            background: rgba(255, 255, 255, 0.5); /* Fond partiellement transparent */
-            z-index: 1000; /* Assure que la nav est au-dessus du diaporama */
+            background: rgba(255, 255, 255, 0.5); // Fond semi-transparent
+            z-index: 1000; // Garantit que la barre de navigation reste au-dessus du contenu
         }
         .slideshow-container {
             position: relative;
             width: 100%;
-            height: calc(100vh - 68px); /* Hauteur du footer */
+            height: calc(100vh - 68px); // Ajustement pour le pied de page
             top: 0;
         }
         .slide {
@@ -52,24 +57,24 @@ include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
             width: 100%;
             height: 100%;
             opacity: 0;
-            transition: opacity 1s;
+            transition: opacity 1s; // Transition en fondu
         }
         .slide img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; // Assure que les images couvrent entièrement leur conteneur
         }
         .text {
             position: absolute;
-            top: 90%; /* Ajustez cette valeur pour déplacer le texte verticalement */
+            top: 90%; 
             left: 20px;
             color: white;
             font-size: 20px;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.5); // Texte avec fond semi-transparent
             padding: 10px;
         }
         .active {
-            opacity: 1;
+            opacity: 1; // Rend l'image visible
         }
     </style>
 
@@ -77,38 +82,39 @@ include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
 
 <body>
     <div class="slideshow-container">
-        <!-- Slides -->
+        <!-- Diapositives du carrousel d'images -->
         <div class="slide active">
             <img src="/my-app/ressources/diapo/1.jpg" alt="Image 1">
             <div class="text">Bienvenue sur notre site !</div>
         </div>
         <div class="slide">
             <img src="/my-app/ressources/diapo/2.jpg" alt="Image 2">
-            <div class="text">Bienvenue sur notre site !</div>
+            <div class="text">Découvrez nos services.</div>
         </div>
         <div class="slide">
             <img src="/my-app/ressources/diapo/3.jpg" alt="Image 3">
-            <div class="text">Bienvenue sur notre site !</div>
+            <div class="text">Contactez-nous pour plus d'informations.</div>
         </div>
         <div class="slide">
             <img src="/my-app/ressources/diapo/4.jpg" alt="Image 4">
-            <div class="text">Bienvenue sur notre site !</div>
+            <div class="text">Merci de choisir notre site !</div>
         </div>
     </div>
 
     <script>
+        // Script pour le contrôle du carrousel d'images
         const slides = document.querySelectorAll('.slide');
         const links = document.querySelectorAll('.nav-link');
-        let currentSlide = 0; // Déclarer une seule fois
+        let currentSlide = 0; // Index de l'image courante
 
         function updateLinkColors() {
-            // Supprimer toutes les classes de couleur préalables
+            // Supprime et ajoute des classes pour changer la couleur des liens en fonction du diaporama
             links.forEach(link => {
                 link.classList.remove('nav-link-dark', 'nav-link-light');
             });
 
-            // Ajouter la classe en fonction de l'image visible
-            if (currentSlide === 1 || currentSlide === 3) { // Supposons que les images paires sont claires et impaires foncées
+            // Logique pour déterminer la couleur du lien basée sur l'image courante
+            if (currentSlide % 2 === 0) { 
                 links.forEach(link => link.classList.add('nav-link-dark'));
             } else {
                 links.forEach(link => link.classList.add('nav-link-light'));
@@ -116,18 +122,19 @@ include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
         }
 
         function changeSlide() {
+            // Change l'image active dans le diaporama
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
-            updateLinkColors();
+            updateLinkColors(); // Mise à jour des couleurs des liens
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            setInterval(changeSlide, 5000); // Déplacer setInterval dans DOMContentLoaded
-            updateLinkColors(); // Mise à jour initiale des couleurs
+            // Initialise le diaporama et met à jour les couleurs au démarrage
+            setInterval(changeSlide, 5000); // Change d'image toutes les 5 secondes
+            updateLinkColors();
         });
 </script>
 
 </body>
 </html>
-

@@ -1,20 +1,25 @@
 <?php
 // Page d'affichage pour les admins -> permet la suppression des images.
 
+// Démarrage de la session pour maintenir et vérifier l'état de connexion de l'utilisateur.
 session_start();
+
+// Redirection si l'utilisateur n'est pas connecté.
 if (!isset($_SESSION['username'])) {
     header("Location: /my-app/login.php");
     exit();
 }
 
+// Inclusion des fichiers nécessaires pour la connexion à la base de données, la barre de navigation, le pied de page, et le modèle d'image.
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/DB_connexion.php");
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/nav_adm.php");
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/album/ImageModel.php");
 
-// Définir le fuseau horaire
+// Définition du fuseau horaire pour une gestion correcte des dates.
 date_default_timezone_set('Europe/Zurich');
 
+// Création d'une instance du modèle d'image pour récupérer toutes les images.
 $imageModel = new ImageModel($conn);
 $images = $imageModel->getAllImages();
 ?>
@@ -60,6 +65,7 @@ $images = $imageModel->getAllImages();
         <?php foreach ($images as $image): ?>
             <div class="col-md-3">
                 <div class="image-container">
+                    <!-- Lien pour supprimer chaque image, avec un style visuel clair pour l'action de suppression. -->
                     <a href="image_delete.php?id=<?= $image['id_image'] ?>" class="delete-link">&times;</a>
                     <img src="/my-app/album/uploads/<?= $image['filename'] ?>" alt="Photo" class="img-thumbnail">
                     <div class="image-details">

@@ -1,17 +1,22 @@
 <?php
 // Formulaire d'ajout d'image
+
+// Démarrage de la session pour vérifier si l'utilisateur est connecté
 session_start();
 if (!isset($_SESSION['username'])) {
+    // Redirection vers la page de connexion si l'utilisateur n'est pas connecté
     header("Location: /my-app/login.php");
     exit();
 }
 
+// Inclusion des fichiers nécessaires pour la barre de navigation, le pied de page, la connexion à la base de données et le modèle d'image
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/nav.php");
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/DB_connexion.php");
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/album/imageModel.php");
 
-$imageModel = new ImageModel($conn); // Créer une instance du modèle
+// Créer une instance du modèle d'image
+$imageModel = new ImageModel($conn);
 
 // Récupérer la liste des lieux depuis le modèle
 $listeLieux = $imageModel->getDistinctLieux();
@@ -27,10 +32,10 @@ $listeLieux = $imageModel->getDistinctLieux();
     <link href="/my-app/bootstrap/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #f8f9fa; /* Couleur de fond claire pour la page */
         }
         .container {
-            margin-top: 50px;
+            margin-top: 50px; /* Marge supérieure pour espacer le contenu du haut de la page */
         }
     </style>
 </head>

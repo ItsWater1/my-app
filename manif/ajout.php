@@ -1,9 +1,13 @@
 <?php
 // Formulaire de création d'une manifestation (page admin).
 
+// Inclut les options pour les champs de formulaire "Lieu" et "Type"
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/liste_ajout.php");
+
+// Démarre une session pour maintenir l'état de connexion de l'utilisateur
 session_start();
 
+// Vérifie si l'utilisateur est connecté, sinon redirige vers la page de connexion
 if (!isset($_SESSION['username'])) {
     header("Location: /my-app/login.php");
     exit();
@@ -20,10 +24,10 @@ if (!isset($_SESSION['username'])) {
     <link rel="stylesheet" href="/my-app/bootstrap/bootstrap.min.css">
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #f8f9fa; // Couleur de fond pour une apparence propre et moderne
         }
         .container {
-            margin-top: 50px;
+            margin-top: 50px; // Marge pour éloigner le formulaire de la partie supérieure de la page
         }
     </style>
 </head>
@@ -44,10 +48,10 @@ if (!isset($_SESSION['username'])) {
                 <label for="Lieu">Lieu :</label>
                 <select id="Lieu" name="Lieu" class="form-control" required>
                     <?php
+                    // Dynamiquement remplir les options de lieu à partir de la base de données
                     if ($resultLieu->num_rows > 0) {
                         while ($row = $resultLieu->fetch_assoc()) {
-                            $selected = ($row["id_lieu"] == $lieu) ? "selected" : "";
-                            echo "<option value='" . $row["id_lieu"] . "' $selected>" . $row["NomLieu"] . "</option>";
+                            echo "<option value='" . $row["id_lieu"] . "'>" . $row["NomLieu"] . "</option>";
                         }
                     }
                     ?>
@@ -57,10 +61,10 @@ if (!isset($_SESSION['username'])) {
                 <label for="Type">Type :</label>
                 <select id="Type" name="Type" class="form-control" required>
                     <?php
+                    // Dynamiquement remplir les options de type à partir de la base de données
                     if ($resultType->num_rows > 0) {
                         while ($row = $resultType->fetch_assoc()) {
-                            $selected = ($row["id_type"] == $type) ? "selected" : "";
-                            echo "<option value='" . $row["id_type"] . "' $selected>" . $row["TypeManif"] . "</option>";
+                            echo "<option value='" . $row["id_type"] . "'>" . $row["TypeManif"] . "</option>";
                         }
                     }
                     ?>
@@ -72,17 +76,18 @@ if (!isset($_SESSION['username'])) {
 
     <script src="/my-app/JS/jquery-3.7.1.js"></script>
     <script src="/my-app/JS/popper.min.js"></script>
-    <script src="/my-app/bootstrap/boostrap.min.js"></script>
+    <script src="/my-app/bootstrap/bootstrap.min.js"></script>
     <script>
+        // Validation JavaScript pour s'assurer que le nom de la manifestation est conforme aux attentes
         document.getElementById('addForm').addEventListener('submit', function(event) {
             var NomInput = document.getElementById('Nom');
-            var nomPattern = /^[a-zA-Z\s]*$/;
+            var nomPattern = /^[a-zA-Z\s]*$/; // Regex pour valider que le nom contient uniquement des lettres et des espaces
 
             if (!nomPattern.test(NomInput.value)) {
                 NomInput.classList.add('is-invalid');
                 document.getElementById('NomFeedback').textContent = 'Le format de la donnée entrée est invalide.';
                 document.getElementById('NomFeedback').classList.remove('d-none');
-                event.preventDefault();
+                event.preventDefault(); // Empêcher la soumission du formulaire si non valide
             } else {
                 NomInput.classList.remove('is-invalid');
                 document.getElementById('NomFeedback').classList.add('d-none');

@@ -1,19 +1,24 @@
 <?php
 // Processus d'ajout des images. L'image est ajoutée dans la base de données et dans le dossier uploads. 
+
+// Démarrage de la session pour vérifier l'authentification de l'utilisateur
 session_start();
 if (!isset($_SESSION['username'])) {
     header("Location: /my-app/login.php");
     exit();
 }
 
+// Inclusion des fichiers de connexion à la base de données et du modèle d'image
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/DB_connexion.php");
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/album/ImageModel.php");
 
+// Vérification si la méthode de requête est POST pour traiter le formulaire d'upload
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Vérifier si le fichier téléversé est une image
+    // Vérification si le fichier uploadé est une image
     $file_info = getimagesize($_FILES["image"]["tmp_name"]);
 
     if ($file_info !== false) {
+        // Types d'images autorisés
         $allowed_types = array(IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_GIF);
         if (in_array($file_info[2], $allowed_types)) {
             // L'image est valide, procéder à l'upload
@@ -23,14 +28,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Récupérer l'ID de l'utilisateur à partir de la session
             $user_id = $_SESSION['user_id'];
 
-            // Créer une instance du modèle
+            // Créer une instance du modèle d'image
             $imageModel = new ImageModel($conn);
 
             // Générer un identifiant unique pour le nom de fichier
             $random_chars = uniqid();
             $filename_with_random = $random_chars . "_" . $filename; // Ajout de caractères aléatoires au nom du fichier
             
-            // Chemin de destination pour l'image téléversée
+            // Définir le chemin de destination pour l'image uploadée
             $target_dir = "uploads/";
             $target_file = $target_dir . basename($filename_with_random);
             

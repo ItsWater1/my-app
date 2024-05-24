@@ -115,11 +115,11 @@ include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
 
             // Logique pour déterminer la couleur du lien basée sur l'image courante
             if (currentSlide === 1 || currentSlide === 3) { // Supposons que les images paires sont claires et impaires foncées
-            links.forEach(link => link.classList.add('nav-link-dark'));
-        } else {
-            links.forEach(link => link.classList.add('nav-link-light'));
+                links.forEach(link => link.classList.add('nav-link-dark'));
+            } else {
+                links.forEach(link => link.classList.add('nav-link-light'));
+            }
         }
-    }
 
         function changeSlide() {
             // Change l'image active dans le diaporama

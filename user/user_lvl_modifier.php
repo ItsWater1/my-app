@@ -24,27 +24,27 @@ $user = $_GET['user'];
     <link href="/my-app/bootstrap/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f8f9fa; // Couleur de fond pour une apparence propre et moderne.
+            background-color: #f8f9fa; 
         }
         .container {
-            margin-top: 50px; // Espace au-dessus du contenu pour éviter l'overlap avec la navbar.
+            margin-top: 50px; 
         }
     </style>
 </head>
 <body>
     <div class="container">
         <br />
-        <h2>Modifier le niveau de droit de : <?php echo $user; ?></h2> // Affiche dynamiquement le nom de l'utilisateur à modifier
+        <h2>Modifier le niveau de droit de : <?php echo $user; ?></h2> 
         <form action="/my-app/user/user_lvl_process_modifier.php" method="post">
             <div class="form-group">
                 <label for="nouveaulvl">Nouveau niveau de droits :</label>
                 <select id="nouveaulvl" name="nouveaulvl" required class="form-control">
-                    <option>0</option> // Option pour un utilisateur standard
-                    <option>1</option> // Option pour un utilisateur avec des droits administratifs
+                    <option>0</option>
+                    <option>1</option> 
                 </select>
             </div>
-            <input type="hidden" name="user" value="<?php echo $user; ?>"> // Champ caché pour transmettre en toute sécurité le nom de l'utilisateur
-            <button type="submit" class="btn btn-primary">Modifier</button> // Bouton pour soumettre le formulaire
+            <input type="hidden" name="user" value="<?php echo $user; ?>"> 
+            <button type="submit" class="btn btn-primary">Modifier</button> 
         </form>
     </div>
 

@@ -20,16 +20,16 @@ if (!isset($_SESSION['username'])) {
     <link href="/my-app/bootstrap/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f8f9fa; // Couleur de fond douce pour une lecture confortable.
+            background-color: #f8f9fa;
         }
         .container {
-            margin-top: 50px; // Espace au-dessus du conteneur pour une meilleure présentation.
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Création d'un nouvel utilisateur</h2> // Titre clair pour indiquer la fonction de la page.
+        <h2>Création d'un nouvel utilisateur</h2> 
         <form action="/my-app/user/user_create_process.php" method="post" id="addUser">
             <div class="form-group">
                 <label for="user">Nom d'utilisateur :</label>
@@ -43,8 +43,8 @@ if (!isset($_SESSION['username'])) {
             <div class="form-group">
                 <label for="lvl">Niveau de droits :</label>
                 <select id="lvl" name="lvl" required class="form-control">
-                    <option>0</option> // Option pour des droits d'accès de base.
-                    <option>1</option> // Option pour des droits d'accès administratifs.
+                    <option>0</option> 
+                    <option>1</option> 
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Créer</button>

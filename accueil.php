@@ -27,11 +27,11 @@ include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
     <style>
         /* Styles spécifiques pour les liens de navigation et le corps de la page */
         .nav-link.nav-link-dark {
-            color: black; // Texte foncé pour fond clair
+            color: black; 
         }
 
         .nav-link.nav-link-light {
-            color: white; // Texte clair pour fond foncé
+            color: white; 
         }
 
         body, html {
@@ -43,13 +43,13 @@ include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
             position: fixed;
             width: 100%;
             top: 0;
-            background: rgba(255, 255, 255, 0.5); // Fond semi-transparent
-            z-index: 1000; // Garantit que la barre de navigation reste au-dessus du contenu
+            background: rgba(255, 255, 255, 0.5); 
+            z-index: 1000; 
         }
         .slideshow-container {
             position: relative;
             width: 100%;
-            height: calc(100vh - 68px); // Ajustement pour le pied de page
+            height: calc(100vh - 68px); 
             top: 0;
         }
         .slide {
@@ -57,12 +57,12 @@ include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
             width: 100%;
             height: 100%;
             opacity: 0;
-            transition: opacity 1s; // Transition en fondu
+            transition: opacity 1s; 
         }
         .slide img {
             width: 100%;
             height: 100%;
-            object-fit: cover; // Assure que les images couvrent entièrement leur conteneur
+            object-fit: cover; 
         }
         .text {
             position: absolute;
@@ -70,11 +70,11 @@ include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
             left: 20px;
             color: white;
             font-size: 20px;
-            background: rgba(0, 0, 0, 0.5); // Texte avec fond semi-transparent
+            background: rgba(0, 0, 0, 0.5); 
             padding: 10px;
         }
         .active {
-            opacity: 1; // Rend l'image visible
+            opacity: 1;
         }
     </style>
 
@@ -114,12 +114,12 @@ include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
             });
 
             // Logique pour déterminer la couleur du lien basée sur l'image courante
-            if (currentSlide % 2 === 0) { 
-                links.forEach(link => link.classList.add('nav-link-dark'));
-            } else {
-                links.forEach(link => link.classList.add('nav-link-light'));
-            }
+            if (currentSlide === 1 || currentSlide === 3) { // Supposons que les images paires sont claires et impaires foncées
+            links.forEach(link => link.classList.add('nav-link-dark'));
+        } else {
+            links.forEach(link => link.classList.add('nav-link-light'));
         }
+    }
 
         function changeSlide() {
             // Change l'image active dans le diaporama

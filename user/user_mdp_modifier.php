@@ -24,23 +24,23 @@ $user = $_GET['user'];
     <link href="/my-app/bootstrap/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f8f9fa; // Couleur de fond douce pour une lecture confortable.
+            background-color: #f8f9fa; 
         }
         .container {
-            margin-top: 50px; // Espace au-dessus du contenu pour éviter l'overlap avec la navbar.
+            margin-top: 50px; .
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Modifier le mot de passe de : <?php echo $user; ?></h2> // Affiche dynamiquement le nom de l'utilisateur.
+        <h2>Modifier le mot de passe de : <?php echo $user; ?></h2> 
         <form action="/my-app/user/user_mdp_process_modifier.php" method="post">
             <div class="form-group">
                 <label for="nouveauMDP">Nouveau mot de passe :</label>
-                <input type="text" id="nouveauMDP" name="nouveauMDP" required class="form-control"> // Champ pour entrer le nouveau mot de passe.
+                <input type="text" id="nouveauMDP" name="nouveauMDP" required class="form-control"> 
             </div>
-            <input type="hidden" name="user" value="<?php echo $user; ?>"> // Champ caché pour transmettre en toute sécurité le nom de l'utilisateur.
-            <button type="submit" class="btn btn-primary">Modifier</button> // Bouton pour soumettre le formulaire.
+            <input type="hidden" name="user" value="<?php echo $user; ?>"> 
+            <button type="submit" class="btn btn-primary">Modifier</button> 
         </form>
     </div>
 

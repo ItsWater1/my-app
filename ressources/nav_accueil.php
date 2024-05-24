@@ -17,42 +17,52 @@ if (session_id() === '') {
     <link href="/my-app/bootstrap/bootstrap.min.css" rel="stylesheet">
     <script src="/my-app/bootstrap/bootstrap.bundle.min.js"></script>
     <style>
-        /* Style général pour le corps et la barre de navigation */
+        /*Style de la navigation*/
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
         }
         .navbar {
-            position: fixed; /* Fixe la barre de navigation en haut de la page */
+            position: fixed;
             width: 100%;
             top: 0;
-            z-index: 1000; /* S'assure que la navbar reste au-dessus des autres éléments */
-            padding: 10px 0; /* Ajoute un padding vertical sans affecter les côtés */
-            display: flex; /* Utilise flexbox pour un alignement et une répartition cohérents des éléments */
-            align-items: center; /* Centre les éléments verticalement */
-            justify-content: space-between; /* Distribue les espaces entre les éléments de manière égale */
+            z-index: 1000;
+            padding: 10px 0;
+            display: flex; /* Utilisation de flexbox pour une disposition cohérente */
+            align-items: center; /* Alignement des éléments verticalement au centre */
+            justify-content: space-between; /* Répartition égale des éléments dans la barre */
         }
-
-        /* Styles pour les liens et les boutons dans la navbar */
         .navbar a, .navbar button {
-            background: none; /* Aucun fond pour un style épuré */
-            padding: 10px 20px; /* Padding pour augmenter la zone cliquable */
-            margin: 0 10px; /* Margin pour espacer les éléments */
-            border-radius: 5px; /* Bordures arrondies pour les éléments interactifs */
-            transition: background 0.3s ease; /* Transition pour l'effet de survol */
+            background: none; /* Fond transparent pour les liens et boutons */
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
         }
         .navbar a:hover, .navbar button:hover {
-            background: rgba(255, 255, 255, 0.2); /* Effet de survol pour indiquer l'interactivité */
+            background: rgba(255, 255, 255, 0.2); /* Léger highlight au survol */
         }
         .navbar-brand img {
-            height: 40px; /* Hauteur fixe pour le logo pour assurer la cohérence */
+            height: 40px; /* Taille spécifique pour le logo */
+            vertical-align: middle;
+            border: none;
+        }
+        .navbar .btn-danger {
+            color: white;
+            background-color: #d9534f;
+            border-color: #d43f3a;
+            padding: 10px 20px;
+        }
+        .navbar .btn-danger:hover {
+            background-color: #c9302c;
+            border-color: #ac2925;
         }
         .nav-link {
-            color: blue; /* Définit la couleur des liens */
+            color: blue; /* Couleur spécifique pour les liens */
         }
         .nav-link:hover {
-            color: white; /* Change la couleur au survol pour une meilleure visibilité */
+            color: white; /* Couleur du texte au survol */
         }
     </style>
 </head>

@@ -24,10 +24,10 @@ if (!isset($_SESSION['username'])) {
     <link rel="stylesheet" href="/my-app/bootstrap/bootstrap.min.css">
     <style>
         body {
-            background-color: #f8f9fa; // Couleur de fond pour une apparence propre et moderne
+            background-color: #f8f9fa; 
         }
         .container {
-            margin-top: 50px; // Marge pour éloigner le formulaire de la partie supérieure de la page
+            margin-top: 50px; 
         }
     </style>
 </head>

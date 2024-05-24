@@ -39,7 +39,7 @@ $benefice = $_GET['benefice'];
 </head>
 <body>
     <div class="container">
-        <h2 class="text-center mb-5">Modifier la manifestation</h2> // Titre centré pour une clarté visuelle.
+        <h2 class="text-center mb-5">Modifier la manifestation</h2>
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <!-- Formulaire de soumission pour les modifications avec les champs pré-remplis -->

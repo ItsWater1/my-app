@@ -1,10 +1,10 @@
 <?php
 // Cette page sert aux administrateurs à gérer les utilisateurs. 
 
-// Démarre une session et redirige vers la page de connexion si l'utilisateur n'est pas authentifié.
+// Démarre une session et vérifie si l'utilisateur est connecté et a les droits administrateur.
 session_start();
-if (!isset($_SESSION['username'])) {
-    header("Location: /my-app/login.php");
+if (!isset($_SESSION['username']) || !$_SESSION['admin']) {
+    header("Location: /my-app/login.php"); // Redirection vers la page de connexion si l'utilisateur n'est pas admin
     exit();
 }
 

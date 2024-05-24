@@ -7,12 +7,11 @@ include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/DB_connexion.php");
 // Démarrer une session pour maintenir l'état de connexion de l'utilisateur
 session_start();
 
-// Vérifier si l'utilisateur est connecté, sinon rediriger vers la page de connexion
-if (!isset($_SESSION['username'])) {
-    header("Location: /my-app/login.php");
+// Vérifie si l'utilisateur est connecté et a les droits administrateur.
+if (!isset($_SESSION['username']) || !$_SESSION['admin']) {
+    header("Location: /my-app/login.php"); // Redirection vers la page de connexion si l'utilisateur n'est pas admin
     exit();
 }
-
 // Récupérer les données du formulaire envoyées via POST
 $nouveaulvl = $_POST['nouveaulvl'];
 $user = $_POST['user'];

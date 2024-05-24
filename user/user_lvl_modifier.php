@@ -4,9 +4,9 @@
 // Démarrage de la session pour maintenir et vérifier l'état de connexion de l'utilisateur
 session_start();
 
-// Vérifie si l'utilisateur est connecté, sinon redirige vers la page de connexion
-if (!isset($_SESSION['username'])) {
-    header("Location: /my-app/login.php");
+// Vérifie si l'utilisateur est connecté et a les droits administrateur.
+if (!isset($_SESSION['username']) || !$_SESSION['admin']) {
+    header("Location: /my-app/login.php"); // Redirection vers la page de connexion si l'utilisateur n'est pas admin
     exit();
 }
 

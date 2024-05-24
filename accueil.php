@@ -89,15 +89,15 @@ include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
         </div>
         <div class="slide">
             <img src="/my-app/ressources/diapo/2.jpg" alt="Image 2">
-            <div class="text">Découvrez nos services.</div>
+            <div class="text">Bienvenue sur notre site !</div>
         </div>
         <div class="slide">
             <img src="/my-app/ressources/diapo/3.jpg" alt="Image 3">
-            <div class="text">Contactez-nous pour plus d'informations.</div>
+            <div class="text">Bienvenue sur notre site !</div>
         </div>
         <div class="slide">
             <img src="/my-app/ressources/diapo/4.jpg" alt="Image 4">
-            <div class="text">Merci de choisir notre site !</div>
+            <div class="text">Bienvenue sur notre site !</div>
         </div>
     </div>
 

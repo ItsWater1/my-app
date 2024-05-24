@@ -44,7 +44,7 @@ include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
         .slideshow-container {
             position: relative;
             width: 100%;
-            height: calc(100vh - 68px); /* Ajustez en fonction de la hauteur du footer */
+            height: calc(100vh - 68px); /* Hauteur du footer */
             top: 0;
         }
         .slide {

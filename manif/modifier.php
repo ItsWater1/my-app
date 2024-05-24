@@ -45,6 +45,8 @@ $benefice = $_GET['benefice'];
                 <!-- Formulaire de soumission pour les modifications avec les champs pré-remplis -->
                 <form action="/my-app/manif/process_modifier.php" method="post" id="modifierForm">
                     <input type="hidden" name="ancienNom" value="<?php echo $nomManifestation; ?>"> 
+                    <input type="hidden" name="ancienType" value="<?php echo $type; ?>">
+                    <input type="hidden" name="ancienLieu" value="<?php echo $lieu; ?>">
                     <div class="form-group">
                         <label for="nouveauNom">Nouveau Nom :</label>
                         <input type="text" id="nouveauNom" name="nouveauNom" value="<?php echo $nomManifestation; ?>" class="form-control" required>
@@ -88,7 +90,7 @@ $benefice = $_GET['benefice'];
                     </div>
                     <div class="form-group">
                         <label for="nouveauBenefice">Nouveau Bénéfice :</label>
-                        <input type="text" id="nouveauBenefice" name="nouveauBenefice" class="form-control" required>
+                        <input type="text" id="nouveauBenefice" name="nouveauBenefice" class="form-control">
                         <div id="nouveauBeneficeFeedback" class="invalid-feedback alert alert-danger d-none"></div>
                     </div>
                     <button type="submit" class="btn btn-primary">Modifier</button>
@@ -107,7 +109,7 @@ $benefice = $_GET['benefice'];
             var nouveauBeneficeInput = document.getElementById('nouveauBenefice');
 
             var nomPattern = /^[a-zA-Z\s]*$/; // Vérifie que le nom ne contient que des lettres et des espaces.
-            var beneficePattern = /^\d+$/; // Vérifie que le bénéfice est un nombre.
+            var beneficePattern = /^\d*(\.\d{1,2})?$/; // Permet des nombres entiers ou décimaux avec jusqu'à deux décimales.
 
             // Validation conditionnelle pour s'assurer que les données entrées sont correctes.
             if (!nomPattern.test(nouveauNomInput.value)) {
@@ -120,9 +122,9 @@ $benefice = $_GET['benefice'];
                 document.getElementById('nouveauNomFeedback').classList.add('d-none');
             }
 
-            if (!beneficePattern.test(nouveauBeneficeInput.value)) {
+            if (nouveauBeneficeInput.value !== "" && !beneficePattern.test(nouveauBeneficeInput.value)) {
                 nouveauBeneficeInput.classList.add('is-invalid');
-                document.getElementById('nouveauBeneficeFeedback').textContent = 'Le format de la donnée entrée est invalide.';
+                document.getElementById('nouveauBeneficeFeedback').textContent = 'Le format de la donnée entrée est invalide. Entrez un nombre ou laissez vide pour aucun bénéfice.';
                 document.getElementById('nouveauBeneficeFeedback').classList.remove('d-none');
                 event.preventDefault();
             } else {

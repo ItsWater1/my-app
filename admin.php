@@ -55,21 +55,18 @@ include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
         fetch('/my-app/DB/tableau.php')
             .then(response => response.json())
             .then(data => {
-                data.forEach(row => {
-                    if (row.Benefice === null) {
-                        row.Benefice = "Aucun"; // Remplace les valeurs nulles par "Aucun"
-                    }
-                });
-
                 // Création et insertion des lignes dans le tableau HTML
                 const tableBody = document.getElementById('table-body');
                 data.forEach(row => {
+                    // Vérifie si le bénéfice est null et remplace par "Aucun" ou ajoute ".-" sinon
+                    const beneficeDisplay = row.Benefice === null ? "Aucun" : `${row.Benefice} CHF`;
+
                     const tr = document.createElement('tr');
                     tr.innerHTML = `<td>${row.NomManifestation}</td>
                                     <td>${row.Date}</td>
                                     <td>${row.NomLieu}</td>
                                     <td>${row.TypeManif}</td>
-                                    <td>${row.Benefice}</td>
+                                    <td>${beneficeDisplay}</td>
                                     <td>
                                         <div class="text-center">
                                             <a href="manif/modifier.php?nomManifestation=${encodeURIComponent(row.NomManifestation)}&date=${encodeURIComponent(row.Date)}&lieu=${encodeURIComponent(row.NomLieu)}&type=${encodeURIComponent(row.TypeManif)}&benefice=${encodeURIComponent(row.Benefice)}" class="btn btn-sm btn-warning">Modifier la manifestation</a>
@@ -81,6 +78,7 @@ include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
             })
             .catch(error => console.error('Erreur lors de la récupération des données:', error));
     </script>
+
 
     <div class="text-center">
         <a href="manif/ajout.php" class="btn btn-lg btn-success">Ajouter une manifestation</a> <!-- Bouton pour ajouter une nouvelle manifestation -->

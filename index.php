@@ -52,30 +52,27 @@ include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
     <script src="/my-app/bootstrap/bootstrap.min.js"></script>
 
     <script>
-        // Script pour la récupération et l'affichage des données des manifestations
+        // Appel AJAX pour récupérer les données des manifestations
         fetch('/my-app/DB/tableau.php')
             .then(response => response.json())
             .then(data => {
-                // Gestion des valeurs nulles pour le champ bénéfice
-                data.forEach(row => {
-                    if (row.Benefice === null) {
-                        row.Benefice = "Aucun"; // Remplacement des valeurs null par "Aucun"
-                    }
-                });
-
-                // Insertion des données récupérées dans le tableau HTML
+                // Création et insertion des lignes dans le tableau HTML
                 const tableBody = document.getElementById('table-body');
                 data.forEach(row => {
+                    // Vérifie si le bénéfice est null et remplace par "Aucun" ou ajoute "CHF" sinon
+                    const beneficeDisplay = row.Benefice === null ? "Aucun" : `${row.Benefice} CHF`;
+
                     const tr = document.createElement('tr');
                     tr.innerHTML = `<td>${row.NomManifestation}</td>
                                     <td>${row.Date}</td>
                                     <td>${row.NomLieu}</td>
                                     <td>${row.TypeManif}</td>
-                                    <td>${row.Benefice}</td>`;
+                                    <td>${beneficeDisplay}</td>
+                                    `;
                     tableBody.appendChild(tr);
                 });
             })
-            .catch(error => console.error('Erreur lors de la récupération des données:', error)); // Gestion des erreurs
+            .catch(error => console.error('Erreur lors de la récupération des données:', error));
     </script>
 </body>
 </html>

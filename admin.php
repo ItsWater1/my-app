@@ -58,7 +58,7 @@ include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
                 // Création et insertion des lignes dans le tableau HTML
                 const tableBody = document.getElementById('table-body');
                 data.forEach(row => {
-                    // Vérifie si le bénéfice est null et remplace par "Aucun" ou ajoute ".-" sinon
+                    // Vérifie si le bénéfice est null et remplace par "Aucun" ou ajoute "CHF" sinon
                     const beneficeDisplay = row.Benefice === null ? "Aucun" : `${row.Benefice} CHF`;
 
                     const tr = document.createElement('tr');

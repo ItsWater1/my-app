@@ -8,7 +8,7 @@ $sql = "SELECT
     user,
     level
 FROM t_utilisateur
-ORDER BY level";
+ORDER BY user";
 
 // Préparation de la requête préparée
 $stmt = $conn->prepare($sql);

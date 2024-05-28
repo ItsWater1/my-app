@@ -13,7 +13,7 @@ if (!isset($_SESSION['username'])) {
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/nav.php");
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/DB_connexion.php");
-include($_SERVER['DOCUMENT_ROOT'] . "/my-app/album/imageModel.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/album/image_model.php");
 
 // Créer une instance du modèle d'image
 $imageModel = new ImageModel($conn);

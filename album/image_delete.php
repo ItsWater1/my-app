@@ -12,7 +12,7 @@ if (!isset($_SESSION['username'])) {
 
 // Inclusion des fichiers nécessaires pour la connexion à la base de données et les opérations sur les images
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/DB_connexion.php");
-include($_SERVER['DOCUMENT_ROOT'] . "/my-app/album/ImageModel.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/album/Image_model.php");
 
 // Vérifier si la requête est de type GET et contient l'identifiant de l'image
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {

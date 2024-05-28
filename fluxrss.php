@@ -6,7 +6,7 @@ date_default_timezone_set('Europe/Zurich');
 
 // Inclusion des fichiers pour la connexion à la base de données et les requêtes spécifiques au RSS.
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/DB_connexion.php");
-include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/requeterss.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/requete_rss.php");
 ?>
 
 <!-- Début du document XML pour le flux RSS -->

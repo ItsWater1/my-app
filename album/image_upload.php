@@ -10,7 +10,7 @@ if (!isset($_SESSION['username'])) {
 
 // Inclusion des fichiers de connexion à la base de données et du modèle d'image
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/DB_connexion.php");
-include($_SERVER['DOCUMENT_ROOT'] . "/my-app/album/ImageModel.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/album/Image_model.php");
 
 // Vérification si la méthode de requête est POST pour traiter le formulaire d'upload
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

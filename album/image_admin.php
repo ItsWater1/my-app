@@ -14,7 +14,7 @@ if (!isset($_SESSION['username']) || !$_SESSION['admin']) {
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/DB/DB_connexion.php");
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/nav_adm.php");
 include($_SERVER['DOCUMENT_ROOT'] . "/my-app/ressources/footer.php");
-include($_SERVER['DOCUMENT_ROOT'] . "/my-app/album/ImageModel.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/my-app/album/Image_model.php");
 
 // Définition du fuseau horaire pour une gestion correcte des dates.
 date_default_timezone_set('Europe/Zurich');

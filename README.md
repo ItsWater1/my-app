@@ -39,7 +39,7 @@ Ce projet est un site web développé en PHP, destiné à gérer les manifestati
 - **DB_connexion.php :** Gère la connexion à la base de données.
 - **nav.php, nav_adm.php :** Barre de navigation pour les utilisateurs et les administrateurs.
 - **footer.php :** Pied de page commun à toutes les pages.
-- **ImageModel.php :** Contient les fonctions pour gérer les images (ajout, suppression, récupération).
+- **Image_model.php :** Contient les fonctions pour gérer les images (ajout, suppression, récupération).
 - **manif :** Répertoire contenant les scripts de gestion des manifestations (ajout, modification, suppression).
 - **user :** Répertoire contenant les scripts de gestion des utilisateurs (création, modification de mot de passe, suppression).
 

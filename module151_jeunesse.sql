@@ -1,9 +1,24 @@
+-- AW 05.06.2024
+-- Database: Module151_jeunesse
+-- Détection si une autre base de donnée du même nom existe
+
+DROP DATABASE IF EXISTS Module151_jeunesse;
+
+-- Création d'un nouvelle base de donnée
+
+CREATE DATABASE IF NOT EXISTS Module151_jeunesse;
+
+-- Utilisation de cette base de donnée
+
+USE Module151_jeunesse;
+-- --------------------------------------------------------
+
 -- phpMyAdmin SQL Dump
 -- version 4.5.4.1
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Ven 24 Mai 2024 à 08:34
+-- Généré le :  Mar 04 Juin 2024 à 13:35
 -- Version du serveur :  5.7.11
 -- Version de PHP :  7.0.3
 
@@ -314,17 +329,17 @@ ALTER TABLE `t_utilisateur`
 -- AUTO_INCREMENT pour la table `t_image`
 --
 ALTER TABLE `t_image`
-  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `t_image_avoir_lieu`
 --
 ALTER TABLE `t_image_avoir_lieu`
-  MODIFY `id_image_avoir_lieu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_image_avoir_lieu` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `t_image_avoir_user`
 --
 ALTER TABLE `t_image_avoir_user`
-  MODIFY `id_image_avoir_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_image_avoir_user` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `t_lieu`
 --
@@ -334,17 +349,17 @@ ALTER TABLE `t_lieu`
 -- AUTO_INCREMENT pour la table `t_manif`
 --
 ALTER TABLE `t_manif`
-  MODIFY `id_manif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_manif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `t_manif_avoir_lieu`
 --
 ALTER TABLE `t_manif_avoir_lieu`
-  MODIFY `id_manif_avoir_lieu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_manif_avoir_lieu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `t_manif_avoir_type`
 --
 ALTER TABLE `t_manif_avoir_type`
-  MODIFY `id_manif_avoir_type` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_manif_avoir_type` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `t_type`
 --
@@ -354,7 +369,7 @@ ALTER TABLE `t_type`
 -- AUTO_INCREMENT pour la table `t_utilisateur`
 --
 ALTER TABLE `t_utilisateur`
-  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Contraintes pour les tables exportées
 --
